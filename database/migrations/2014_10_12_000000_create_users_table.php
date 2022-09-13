@@ -21,6 +21,12 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+
+            $table->string("jalan")->nullable();
+        	$table->string("kelurahan")->nullable();
+        	$table->string("kecamatan")->nullable();
+            $table->string("kode_pos")->nullable();
+            $table->char("jenis_kelamin")->nullable();
         });
     }
 
