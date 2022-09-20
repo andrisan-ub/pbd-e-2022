@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('rubrik_nilai', function (Blueprint $table) {
             $table->bigIncrements("id_rubrik_nilai");
-            $table->integer("baik");
-            $table->integer("cukup");
-            $table->integer("kurang");
+            $table->unsignedInteger("nilai");
+            $table->string("title");
+            $table->text("description");
             $table->timestamps();
         });
     }
