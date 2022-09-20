@@ -13,11 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('mata_kuliah', function (Blueprint $table) {
-            $table->kode_mk();
-            $table->char('nama_mk',45);
-            $table->integer('jumlah_sks');
-            $table->integer('tahun_kurikulum');
+        Schema::create('mahasiswa', function (Blueprint $table) {
+            $table->id('nim')->primary;
+            $table->char('nama_mahasiswa',100);
         });
     }
 
@@ -28,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mata_kuliah');
+        Schema::dropIfExists('mahasiswa');
     }
 };

@@ -13,9 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('mahasiswa', function (Blueprint $table) {
-            $table->nim();
-            $table->char('nama_mahasiswa',100);
+        Schema::create('sub_cpmk', function (Blueprint $table) {
+            $table->increments('id_sub_cpmk');
         });
     }
 
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mahasiswa');
+        Schema::dropIfExists('sub_cpmk');
     }
 };
