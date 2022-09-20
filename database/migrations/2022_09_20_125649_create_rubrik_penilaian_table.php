@@ -19,7 +19,6 @@ return new class extends Migration
             $table->char('llo', 10);
             $table->char('indikator', 45);
             $table->char('skor_indikator', 10);
-
         });
     }
 
