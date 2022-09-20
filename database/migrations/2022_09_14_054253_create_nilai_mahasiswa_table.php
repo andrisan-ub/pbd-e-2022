@@ -21,11 +21,11 @@ return new class extends Migration
         	$table->foreign("id_lembar_kerja")->references("id_lembar_kerja")->on("lembar_kerja");
 
 
-        	$table->unsignedBigInteger('nip');
+        	$table->bigInteger('nip');
         	$table->foreign("nip")->references("nip")->on("dosen");
 
 
-        	$table->unsignedBigInteger('nim');
+        	$table->bigInteger('nim');
         	$table->foreign("nim")->references("nim")->on("mahasiswa");
         	$table->primary(['id_lembar_kerja', 'nip', 'nim']);
         });

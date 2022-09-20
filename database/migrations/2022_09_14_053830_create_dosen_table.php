@@ -14,7 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('dosen', function (Blueprint $table) {
-            $table->bigIncrements('nip');
+            $table->bigInteger('nip');
+            $table->primary('nip');
             $table->unsignedBigInteger('id');
             $table->foreign('id')->references('id')->on('users')->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
