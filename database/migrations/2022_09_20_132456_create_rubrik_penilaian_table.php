@@ -13,9 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('cpmk', function (Blueprint $table) {
-            $table->string('kode_matkul')->primary();
-            $table->string('materi');
+        Schema::create('rubrik_penilaian', function (Blueprint $table) {
+            $table->id('kode indikator');
             $table->timestamps();
         });
     }
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cpmk');
+        Schema::dropIfExists('rubrik_penilaian');
     }
 };
