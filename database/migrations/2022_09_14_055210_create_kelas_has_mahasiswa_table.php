@@ -18,9 +18,7 @@ return new class extends Migration
             $table->foreign('id_kelas')->references('id_kelas')->on('kelas')->cascadeOnDelete()->cascadeOnUpdate();
             $table->unsignedBigInteger('nim');
             $table->foreign('nim')->references('nim')->on('mahasiswa')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->unsignedBigInteger('nip');
-            $table->foreign('nip')->references('nip')->on('dosen')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->primary(['id_kelas','nim']);
+            $table->primary(['id_kelas', 'nim']);
         });
     }
 
