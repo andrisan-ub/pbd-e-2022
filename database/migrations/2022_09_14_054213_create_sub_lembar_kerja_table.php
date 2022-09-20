@@ -15,14 +15,12 @@ return new class extends Migration
     {
         Schema::create('sub_lembar_kerja', function (Blueprint $table) {
             $table->bigIncrements("id_sub_lembar_kerja");
-        	$table->string("deskripsi_sub_lembar_kerja");
+            $table->string("deskripsi_sub_lembar_kerja");
 
-        	$table->unsignedBigInteger('id_lembar_kerja');
-        	$table->foreign("id_lembar_kerja")->references("id_lembar_kerja")->on("lembar_kerja");
-            
-        	$table->unsignedBigInteger('id_rubrik_nilai');
-        	$table->foreign("id_rubrik_nilai")->references("id_rubrik_nilai")->on("rubrik_nilai");
-        	$table->timestamps();
+            $table->unsignedBigInteger('id_lembar_kerja');
+            $table->foreign("id_lembar_kerja")->references("id_lembar_kerja")->on("lembar_kerja");
+
+            $table->timestamps();
         });
     }
 
