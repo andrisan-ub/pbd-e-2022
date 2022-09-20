@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('rubrik_penilaian', function (Blueprint $table) {
-            $table->id('kode_indikator');
-            $table->timestamps();
+        Schema::create('dosen', function (Blueprint $table) {
+            $table->id('nip');
+            $table->string('nama_dosen');
         });
     }
 
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rubrik_penilaian');
+        Schema::dropIfExists('dosen');
     }
 };
