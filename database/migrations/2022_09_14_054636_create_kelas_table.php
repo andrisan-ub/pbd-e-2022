@@ -21,7 +21,6 @@ return new class extends Migration
             $table->unsignedBigInteger('nip');
             $table->foreign('nip')->references('nip')->on('dosen')->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
-
         });
     }
 
