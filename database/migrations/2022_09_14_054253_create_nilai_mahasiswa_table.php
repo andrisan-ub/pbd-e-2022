@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('nilai_mahasiswa', function (Blueprint $table) {
-            $table->unsignedInteger("nilai");
+            $table->unsignedInteger("nilai")->default(0);
 
 
             $table->unsignedBigInteger('id_lembar_kerja');
