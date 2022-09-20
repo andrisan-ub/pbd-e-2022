@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('CPMK', function (Blueprint $table) {
+        Schema::create('cpmk', function (Blueprint $table) {
             $table->string('kode_matkul')->primary();
             $table->string('materi');
             $table->timestamps();
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('CPMK');
+        Schema::dropIfExists('cpmk');
     }
 };
