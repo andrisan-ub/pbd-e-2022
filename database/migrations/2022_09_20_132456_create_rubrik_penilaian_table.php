@@ -14,7 +14,12 @@ return new class extends Migration
     public function up()
     {
         Schema::create('rubrik_penilaian', function (Blueprint $table) {
-            $table->id('kode_indikator');
+            $table->text('kode_indikator')->primary();
+            $table->integer('poin');
+            $table->integer('skala');
+            $table->text('deskripsi');
+            $table->bigInteger('dosen_nip')->unsigned();
+            $table->foreign('dosen_nip')->references('nip')->on('dosen');
             $table->timestamps();
         });
     }
