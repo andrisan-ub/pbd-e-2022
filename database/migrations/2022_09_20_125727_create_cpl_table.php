@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('cpl', function (Blueprint $table) {
-            $table->id('kode_cpl');
+            $table->string('kode_cpl')->primary();
             $table->string('materi');
             $table->foreign('kode_materi') ->references('kode_materi') -> on ('matkul');
             $table->timestamps();
