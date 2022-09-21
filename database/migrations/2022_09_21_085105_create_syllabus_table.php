@@ -13,18 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('mata_kuliah', function (Blueprint $table) {
-            $table->string('kode_matkul')->primary();
-            $table->bigInteger('dosen_nip');
-            $table->foreign('dosen_nip')->references('nip')->on('dosen');
-            $table->string('nama_matkul');
-            $table->string('program_studi');
-            $table->string('jurusan');
-            $table->string('semester');
-            $table->string('sks');
-            $table->string('sifat');
-            $table->string('deskripsi');
-            $table->timestamps();
+        Schema::create('syllabus', function (Blueprint $table) {
+            $table->id('id');
+            $table->bigInteger('course_id')->unsigned();
+            $table->string('name');
+            $table->text('author')->nullable();
+            $table->string('head_of_study_program',512)->nullable();
         });
     }
 
