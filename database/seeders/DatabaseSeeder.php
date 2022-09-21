@@ -25,9 +25,9 @@ class DatabaseSeeder extends Seeder
         // ]);
         $faker = Faker::create();
 
-        $id_study_program = [random_int(1, 10), random_int(1, 10), random_int(1, 10)];
-        $id_faculty = [random_int(1, 10), random_int(1, 10), random_int(1, 10)];
-        $name = [$faker->text(10), $faker->text(10), $faker->text(10)];
+        $id_study_program = [1, 2];
+        $id_faculty = [1, 2];
+        $name = ["Teknologi Informasi", "Teknik Informatika"];
 
         for ($i=0; $i < sizeof($id_study_program); $i++) { 
             DB::table('study_program')->insert([
