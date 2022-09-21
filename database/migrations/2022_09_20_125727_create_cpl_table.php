@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('materi');
             $table->foreign('kode_matkul') ->references('kode_matkul') -> on ('matkul');
             
-            $table->timestamp();
+            $table->timestamps();
         });
     }
 
