@@ -1,6 +1,5 @@
 <?php
 
-use Brick\Math\BigInteger;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,9 +14,6 @@ return new class extends Migration
     public function up()
     {
         Schema::create('cpmk_has_sub_cpmk', function (Blueprint $table) {
-            $table->bigInteger('kode_sub_cpmk')->unsigned();
-            $table->bigInteger('kode_cpmk')->unsigned();
-
             $table->foreign('kode_sub_cpmk') ->references('kode_sub_cpmk') -> on ('sub_cpmk');
             $table->foreign('kode_cpmk') ->references('kode_cpmk') -> on ('cpmk');
             

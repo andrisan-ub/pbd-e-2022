@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('sub_cpmk', function (Blueprint $table) {
             $table->id('kode_sub_cpmk');
             $table->string('sub_materi');
-            $table->timestamps();
+            $table->timestamp;
         });
     }
 
