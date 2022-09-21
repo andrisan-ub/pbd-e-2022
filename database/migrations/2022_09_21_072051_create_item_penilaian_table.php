@@ -17,7 +17,7 @@ return new class extends Migration
             $table->text('teori');
             $table->text('praktik');
             $table->text('kode_indikator');
-            $table->foreign('kode_indikator')->references('kode_indikator')->on('rubrik_penilian');
+            $table->foreign('kode_indikator')->references('kode_indikator')->on('rubrik_penilaian');
             $table->timestamps();
         });
     }
