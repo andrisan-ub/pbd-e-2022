@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('cpl', function (Blueprint $table) {
             $table->string('kode_cpl',10)->primary();
             $table->string('materi');
-            $table->string('kode_matkul');
+            $table->string('kode_matkul')->unsigned();
             
             $table->foreign('kode_matkul') ->references('kode_matkul') -> on ('matkul');
             $table->timestamps();
