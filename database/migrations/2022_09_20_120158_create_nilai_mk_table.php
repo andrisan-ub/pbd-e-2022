@@ -24,8 +24,6 @@ return new class extends Migration
             $table->integer('NILAI_UTS');
             $table->integer('NILAI_UAS');
 
-            $table->foreignId('rubrik_penilaian_id_rubrik')->nullable();
-            $table->foreign('rubrik_penilaian_id_rubrik')->references('id_rubrik')->on('rubrik_penilaian');
         });
     }
 
