@@ -14,8 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('mata_kuliah', function (Blueprint $table) {
-            $table->id('kode_matkul');
-            $table->bigInteger('dosen_nip')->unsigned();
+            $table->string('kode_matkul',30);
+            $table->primary('kode_matkul');
+            $table->bigInteger('dosen_nip');
             $table->foreign('dosen_nip')->references('nip')->on('dosen');
             $table->string('nama_matkul');
             $table->string('program_studi');
