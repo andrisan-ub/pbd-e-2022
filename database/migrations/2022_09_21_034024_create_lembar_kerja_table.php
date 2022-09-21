@@ -14,7 +14,20 @@ return new class extends Migration
     public function up()
     {
         Schema::create('lembar_kerja', function (Blueprint $table) {
-            $table->id();
+            
+            $table->string('kode_lk')->primary();
+            $table->bigInteger('nim')->unsigned();
+            $table->string('tujuan');
+            $table->string('judul');
+            $table->string('pengerjaan_tugas');
+            $table->string('bentuk_tugas');
+            $table->string('deskripsi');
+            $table->string('bentuk_format_luaran');
+            $table->string ('waktu_pengerjaan');
+            $table->string('metode');
+            $table->double('bobot');
+            $table->foreign('nim')->references('nim')->on('mahasiswa');
+
             $table->timestamps();
         });
     }

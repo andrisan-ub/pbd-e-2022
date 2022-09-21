@@ -13,9 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('sub_cpmk', function (Blueprint $table) {
-            $table->string('kode_sub_cpmk')->primary();
-            $table->string('sub_materi');
+        Schema::create('cpl_has_cpmk', function (Blueprint $table) {
+            $table->String('kode_cpl')->unsigned();
+            $table->String('kode_cpmk')->unsigned();
+            $table->foreign('kode_cpl')->references('kode_cpl')->on('cpl') ;
+            $table->foreign('kode_cpmk')->references('kode_cpmk')->on('cpmk');
             $table->timestamps();
         });
     }
@@ -27,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sub_cpmk');
+        Schema::dropIfExists('cpl_has_cpmk');
     }
 };
