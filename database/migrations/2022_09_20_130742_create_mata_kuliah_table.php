@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('mata_kuliah', function (Blueprint $table) {
             $table->id('kode_matkul');
-            $table->bigInteger('dosen_nip');
+            $table->bigInteger('dosen_nip')->unsigned();
             $table->foreign('dosen_nip')->references('nip')->on('dosen');
             $table->string('nama_matkul');
             $table->string('program_studi');
