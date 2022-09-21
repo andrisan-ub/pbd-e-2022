@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('mahasiswa_has_mata_kuliah', function (Blueprint $table) {
-            $table->bigInteger('mahasiswa_nim');
-            $table->bigInteger('mata_kuliah_kode_matkul');
+            $table->bigInteger('mahasiswa_nim')->unsigned();
+            $table->bigInteger('mata_kuliah_kode_matkul')->unsigned();
             $table->foreign('mahasiswa_nim')->references('nim')->on('mahasiswa');
             $table->foreign('mata_kuliah_kode_matkul')->references('kode_matkul')->on('mata_kuliah');
             $table->timestamps();
