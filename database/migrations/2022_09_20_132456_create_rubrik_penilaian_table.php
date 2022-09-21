@@ -18,8 +18,12 @@ return new class extends Migration
             $table->integer('poin');
             $table->integer('skala');
             $table->text('deskripsi');
-            $table->bigInteger('dosen_nip');
-            $table->foreign('dosen_nip')->references('nip')->on('dosen');
+            $table->bigInteger('nip');
+            $table->foreign('nip')->references('nip')->on('dosen');
+            $table->text('kode_lk');
+            $table->foreign('kode_lk')->references('kode_lk')->on('lembar_kerja');
+            $table->bigInteger('nim');
+            $table->foreign('nim')->references('nim')->on('mahasiswa');
             $table->timestamps();
         });
     }
