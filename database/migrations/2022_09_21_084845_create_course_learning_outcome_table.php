@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('course_learning_outcome', function (Blueprint $table) {
             $table->id()->unsigned();
             $table->bigInteger('syllabus_id')->unsigned();
+            $table->foreign('syllabus_id')->references('id')->on('syllabus');
             $table->integer('position')->nullable();
             $table->text('description')->nullable();
             $table->timestamps();
