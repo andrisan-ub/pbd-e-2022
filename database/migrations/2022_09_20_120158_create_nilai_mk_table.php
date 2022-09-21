@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('nilai_mk', function (Blueprint $table) {
-            $table->id('ID_NILAI')->primary();
+            $table->id('ID_NILAI');
             $table->integer('TOTAL_NILAI');
             $table->char('BOBOT', 20);
             $table->integer('NILAI_LK01');
