@@ -14,9 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('sub_cpmk', function (Blueprint $table) {
-            $table->id('kode_sub_cpmk');
+            $table->string('kode_sub_cpmk')->primary();
             $table->string('sub_materi');
-            $table->timestamp;
+            $table->timestamps();
         });
     }
 
