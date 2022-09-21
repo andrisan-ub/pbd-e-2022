@@ -13,11 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('item_penilaian', function (Blueprint $table) {
-            $table->text('teori');
-            $table->text('praktik');
-            $table->text('kode_indikator');
-            $table->foreign('kode_indikator')->references('kode_indikator')->on('rubrik_penilaian');
+        Schema::create('mahasiswa_has_mata_kuliah', function (Blueprint $table) {
+            $table->bigInteger('mahasiswa_nim');
+            $table->string('matkul_kode_matkul');
+
+            $table->foreign('mahasiswa_nim')->references('nim')->on('mahasiswa');
+            $table->foreign('matkul_kode_matkul')->references('kode_matkul')->on('mata_kuliah');
+
             $table->timestamps();
         });
     }
@@ -29,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('item_penilaian');
+        Schema::dropIfExists('mahasiswa_has_mata_kuliah');
     }
 };
