@@ -23,7 +23,6 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-        $faker = Faker::create();
 
         $id_study_program = [1, 2];
         $id_faculty = [1, 2];
@@ -36,7 +35,6 @@ class DatabaseSeeder extends Seeder
                 'name' => $name[$i],
             ]);
         }
-
 
     }
 }
