@@ -24,10 +24,10 @@ return new class extends Migration
             $table->integer('NILAI_UTS');
             $table->integer('NILAI_UAS');
 
-            $table->foreignId('DOSEN_NID')->nullable();
-            $table->foreign('DOSEN_NID')->references('NID')->on('DOSEN');
-            $table->foreignId('RUBRIK_PENILAIAN_ID_RUBRIK')->nullable();
-            $table->foreign('RUBRIK_PENILAIAN_ID_RUBRIK')->references('ID_RUBRIK')->on('RUBRIK_PENILAIAN');
+            $table->foreignId('dosen_NID')->nullable();
+            $table->foreign('dosen_NID')->references('NID')->on('dosen');
+            $table->foreignId('rubrik_penilaian_id_rubrik')->nullable();
+            $table->foreign('rubrik_penilaian_id_rubrik')->references('id_rubrik')->on('rubrik_penilaian');
         });
     }
 
