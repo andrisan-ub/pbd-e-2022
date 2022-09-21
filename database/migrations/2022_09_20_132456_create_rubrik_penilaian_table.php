@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('poin');
             $table->integer('skala');
             $table->text('deskripsi');
-            $table->bigInteger('dosen_nip')->unsigned();
+            $table->bigInteger('dosen_nip');
             $table->foreign('dosen_nip')->references('nip')->on('dosen');
             $table->timestamps();
         });
