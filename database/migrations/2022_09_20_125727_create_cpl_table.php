@@ -15,11 +15,10 @@ return new class extends Migration
     {
         Schema::create('cpl', function (Blueprint $table) {
             $table->id('kode_cpl');
-            $table->bigInteger('kode_matkul')->unsigned();
             $table->string('materi');
-            $table->foreign('kode_matkul') ->references('kode_matkul') -> on ('mata_kuliah');
+            $table->foreign('kode_matkul') ->references('kode_matkul') -> on ('matkul');
             
-            $table->timestamps();
+            $table->timestamp;
         });
     }
 
