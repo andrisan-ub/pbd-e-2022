@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('nilai_mk', function (Blueprint $table) {
             $table->id('ID_NILAI')->primary();
             $table->integer('TOTAL_NILAI');
-            $table->varchar('NILAI_LK01', 20);
+            $table->varchar('BOBOT', 20);
             $table->integer('NILAI_LK01');
             $table->integer('NILAI_LK02');
             $table->integer('NILAI_LK03');
