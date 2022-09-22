@@ -20,5 +20,15 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        DB::table('student')->insert([
+            'id' => '215150700111006',
+            'student_id' => 'Mei',
+        ]);
+
+        DB::table('student')->insert([
+            'id' => '215150701111023',
+            'student_id' => 'Loey',
+        ]);
     }
 }
