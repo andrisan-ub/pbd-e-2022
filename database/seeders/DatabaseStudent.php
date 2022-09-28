@@ -17,23 +17,23 @@ class DatabaseStudent extends Seeder
     {
         
         DB::table('student')->insert([
-            'id' => '205150701011024',
-            'student_id' => 'Ikhwan'
+            'id' => '1111',
+            'student_id' => '205150701011024'
         ]);
 
         DB::table('student')->insert([
-            'id' => '205150701011025',
-            'student_id' => 'Fauzi'
+            'id' => '2222',
+            'student_id' => '205150701011025'
         ]);
 
         DB::table('student')->insert([
-            'id' => '205150701011026',
-            'student_id' => 'Mif'
+            'id' => '3333',
+            'student_id' => '205150701011026'
         ]);
 
         DB::table('student')->insert([
-            'id' => '205150701011027',
-            'student_id' => 'Faris'
+            'id' => '4444',
+            'student_id' => '205150701011027'
         ]);
     }
 }
