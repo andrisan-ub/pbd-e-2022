@@ -13,7 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-
+        Schema::create('criterion_level', function (Blueprint $table) {
+            $table->id();
+            $table->float('point');
+            $table->string('title',1024)->nullable();
+            $table->text('description')->nullable();;
+        });
     }
 
     /**
@@ -23,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-
+        Schema::dropIfExists('criterion_level');
     }
 };
