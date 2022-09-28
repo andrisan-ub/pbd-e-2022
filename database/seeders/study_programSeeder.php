@@ -19,6 +19,6 @@ class study_programSeeder extends Seeder
             'id' => 54321,
             'faculty_id' => 12345,
             'name' => "Teknik Komputer"
-        ]);
+        ])
     }
 }
