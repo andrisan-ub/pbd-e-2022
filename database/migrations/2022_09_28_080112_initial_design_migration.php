@@ -13,7 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-
+        Schema::create('grading_plan', function (Blueprint $table) {
+            $table->id();
+            $table->foreign('learning_plan_id')->references('id')->on('learning_plan');
+            $table->foreign('criterion_id')->references('id')->on('criterion');
+        });
     }
 
     /**
