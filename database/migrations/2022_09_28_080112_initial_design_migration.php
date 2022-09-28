@@ -13,7 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-
+        Schema::create('learning_plan', function (Blueprint $table) {
+            $table->id();
+            $table->integer('week_number')->nullable();
+            $table->varchar('title',2048)->nullable();
+            $table->text('description')->nullable();
+            $table->varchar('estimated_time',1024)->nullable();
+            $table->integer('created_at');
+            $table->integer('updated_at')->nullable();
+        });
     }
 
     /**
@@ -23,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-
+        Schema::dropIfExists('learning_plan');
     }
 };
