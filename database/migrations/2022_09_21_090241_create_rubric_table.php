@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('rubric', function (Blueprint $table) {
-            $table->bigInteger('id')->unsigned();
+            $table->id();
             $table->string('name')->nullable();
             $table->bigInteger('assignment_id')->unsigned();
             $table->integer('created_at');
