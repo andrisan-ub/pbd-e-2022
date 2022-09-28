@@ -15,7 +15,7 @@ class syllabus extends Seeder
     public function run()
     {
         DB::table('syllabus')->insert([
-            'id' => '60021',
+            'id' => '',
             'course_id' => '01',
             'name' => 'Konsep Pemrograman Basis Data dan Rencana Projek Akhir Kelompok',
             'author' => 'Issa Arwani, S.Kom, M.Sc',
@@ -23,7 +23,7 @@ class syllabus extends Seeder
         ]);
 
         DB::table('syllabus')->insert([
-            'id' => '60022',
+            'id' => '',
             'course_id' => '02',
             'name' => 'Logika Pemrograman Basis Data dan Progres Projek Tengah Kelompok',
             'author' => 'Issa Arwani, S.Kom, M.Sc',
@@ -31,7 +31,7 @@ class syllabus extends Seeder
         ]);
 
         DB::table('syllabus')->insert([
-            'id' => '60023',
+            'id' => '',
             'course_id' => '03',
             'name' => 'Cursor, Function dan Trigger',
             'author' => 'Issa Arwani, S.Kom, M.Sc',
@@ -39,7 +39,7 @@ class syllabus extends Seeder
         ]);
 
         DB::table('syllabus')->insert([
-            'id' => '60024',
+            'id' => '',
             'course_id' => '04',
             'name' => 'Dynamic SQL dan Smart Codeigniter',
             'author' => 'Issa Arwani, S.Kom, M.Sc',
