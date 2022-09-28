@@ -13,10 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('grading_plan', function (Blueprint $table) {
+        Schema::create('rubric', function (Blueprint $table) {
             $table->id();
-            $table->foreign('learning_plan_id')->references('id')->on('learning_plan');
-            $table->foreign('criterion_id')->references('id')->on('criterion');
+            $table->string('name')->nullable();
+            $table->bigInteger('assignment_id')->unsigned();
+            $table->integer('created_at');
+            $table->integer('updated_at')->nullable();
+
+            $table->timestamps();
         });
     }
 
@@ -27,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('study_program');
+        Schema::dropIfExists('rubric');
     }
 };
