@@ -31,6 +31,11 @@ return new class extends Migration
             $table->integer('updated_at');
             $table->timestamps();
         });
+        
+        Schema::create('faculty', function (Blueprint $table) {
+            $table->id();
+            $table->string('name')->nullable();
+        });
     }
 
     /**
@@ -41,5 +46,6 @@ return new class extends Migration
     public function down()
     {
         Schema::dropIfExists('assignment');
+        Schema::dropIfExists('faculty');
     }
 };
