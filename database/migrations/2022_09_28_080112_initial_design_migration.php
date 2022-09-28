@@ -13,7 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-
+        Schema::create('class', function (Blueprint $table) {
+            $table->id();
+            $table->string('name', 1024);
+            $table->string('thumbnail_img', 1024)->nullable();
+            $table->string('class_code', 256)->nullable();
+            $table->integer('created_at');
+            $table->integer('updated_at');
+        });
     }
 
     /**
@@ -23,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-
+            Schema::dropIfExists('class');
     }
 };
