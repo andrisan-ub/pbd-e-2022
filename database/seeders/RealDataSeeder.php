@@ -14,6 +14,10 @@ class RealDataSeeder extends Seeder
      */
     public function run()
     {
-        //
+    
+        DB::table('student')->insert([
+            'id' => 1314,
+            'student_id' => '215150707111040',
+                    ]);
     }
 }
