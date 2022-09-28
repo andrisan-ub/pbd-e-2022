@@ -18,7 +18,7 @@ class studentSeeder extends Seeder
         //
         DB::table('student')->insert([
             'id' => 1314,
-            'student_id' => 'ini id',
+            'student_id' => '215150707111040',
                     ]);
     }
 }
