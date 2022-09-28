@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('table_lesson_learning_outcome', function (Blueprint $table) {
             $table->id();
             $table->integer('clo_id');
-            $table_>foreign('clo_id')->references('id')->on('course_learning_outcome');
+            $table->foreign('clo_id')->references('id')->on('course_learning_outcome');
             $table->integer('position')->nullable();
             $table->text('description')->nullable();
         });
