@@ -45,6 +45,11 @@ return new class extends Migration
             $table->integer('created_at');
             $table->integer('updated_at');
         });
+
+        Schema::create('study_program', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('faculty_id');
+        });
     }
 
     /**
@@ -57,5 +62,6 @@ return new class extends Migration
         Schema::dropIfExists('assignment');
         Schema::dropIfExists('faculty');
         Schema::dropIfExists('class');
+        Schema::dropIfExists('study_program');
     }
 };
