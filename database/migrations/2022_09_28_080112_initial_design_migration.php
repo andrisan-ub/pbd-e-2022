@@ -48,7 +48,12 @@ return new class extends Migration
 
         Schema::create('study_program', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('faculty_id');
+            $table->string('name')->nullable();
+            $table->bigInteger('assignment_id')->unsigned();
+            $table->integer('created_at');
+            $table->integer('updated_at')->nullable();
+
+            $table->timestamps();
         });
     }
 
@@ -59,6 +64,7 @@ return new class extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('rubric');
         Schema::dropIfExists('assignment');
         Schema::dropIfExists('faculty');
         Schema::dropIfExists('class');
