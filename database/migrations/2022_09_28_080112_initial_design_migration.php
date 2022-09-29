@@ -13,11 +13,47 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('criterion_level', function (Blueprint $table) {
+        Schema::create('assignment', function (Blueprint $table) {
             $table->id();
-            $table->float('point');
-            $table->string('title',1024)->nullable();
-            $table->text('description')->nullable();;
+            $table->integer('llo_id');
+            $table->foreign('llo_id')->references('id')->on('lesson_learning_outcome');
+            $table->text('objective');
+            $table->string('title',(2048));
+            $table->boolean('is_group_assignment');
+            $table->string('assignment_style', (1024));
+            $table->text('description');
+            $table->text('output_instruction');
+            $table->text('submission_instruction');
+            $table->text('deadline_instruction');
+            $table->integer('class_id');
+            $table->foreign('class_id')->references('id')->on('class');
+            $table->integer('created_at');
+            $table->integer('updated_at');
+            $table->timestamps();
+        });
+        
+        Schema::create('faculty', function (Blueprint $table) {
+            $table->id();
+            $table->string('name')->nullable();
+        });
+
+        Schema::create('class', function (Blueprint $table) {
+            $table->id();
+            $table->string('name', 1024);
+            $table->string('thumbnail_img', 1024)->nullable();
+            $table->string('class_code', 256)->nullable();
+            $table->integer('created_at');
+            $table->integer('updated_at');
+        });
+
+        Schema::create('study_program', function (Blueprint $table) {
+            $table->id();
+            $table->string('name')->nullable();
+            $table->bigInteger('assignment_id')->unsigned();
+            $table->integer('created_at');
+            $table->integer('updated_at')->nullable();
+
+            $table->timestamps();
         });
     }
 
@@ -28,6 +64,10 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('criterion_level');
+        Schema::dropIfExists('rubric');
+        Schema::dropIfExists('assignment');
+        Schema::dropIfExists('faculty');
+        Schema::dropIfExists('class');
+        Schema::dropIfExists('study_program');
     }
 };

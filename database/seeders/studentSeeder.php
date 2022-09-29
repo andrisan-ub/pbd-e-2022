@@ -4,8 +4,9 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
-class RealDataSeeder extends Seeder
+class studentSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,14 +15,10 @@ class RealDataSeeder extends Seeder
      */
     public function run()
     {
+        //
         DB::table('student')->insert([
-            'id' => '215150700111006',
-            'student_id' => 'Mei'
-        ]);
-
-        DB::table('student')->insert([
-            'id' => '215150701111023',
-            'student_id' => 'Loey'
-        ]);
+            'id' => 1314,
+            'student_id' => '215150707111040',
+                    ]);
     }
 }
