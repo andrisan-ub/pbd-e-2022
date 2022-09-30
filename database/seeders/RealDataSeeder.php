@@ -41,5 +41,15 @@ class RealDataSeeder extends Seeder
             'author' => 'Issa Arwani, S.Kom, M.Sc',
             'head_of_study_program' => 'Widhy Hayuhardhika N.P,S.Kom., M.Kom.'
         ]);
+        
+        DB::table('student')->insert([
+            'id' => '215150700111006',
+            'student_id' => 'Mei'
+        ]);
+
+        DB::table('student')->insert([
+            'id' => '215150701111023',
+            'student_id' => 'Loey'
+        ]);
     }
 }
