@@ -13,6 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
+        Schema::create('grading_plan', function (Blueprint $table) {
+            $table->id();
+            $table->foreign('learning_plan_id')->references('id')->on('learning_plan');
+            $table->foreign('criterion_id')->references('id')->on('criterion');
+            
         Schema::create('assignment', function (Blueprint $table) {
             $table->id();
             $table->integer('llo_id');
@@ -52,7 +57,6 @@ return new class extends Migration
             $table->bigInteger('assignment_id')->unsigned();
             $table->integer('created_at');
             $table->integer('updated_at')->nullable();
-
             $table->timestamps();
         });
     }
