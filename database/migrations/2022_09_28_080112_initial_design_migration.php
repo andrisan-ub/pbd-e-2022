@@ -13,6 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
+        Schema::create('criterion', function (Blueprint $table) {
+            $table->id();
+            $table->string('title', 1024)->nullable();
+            $table->string('description', 1024)->nullable();
+            $table->float('max_point')->nullable();
+        ]);
+        
         Schema::create('course', function (Blueprint $table) {
             $table->id();
             $table->string('name');
@@ -85,6 +92,7 @@ return new class extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('criterion');
         Schema::dropIfExists('course');
         Schema::dropIfExists('rubric');
         Schema::dropIfExists('assignment');
