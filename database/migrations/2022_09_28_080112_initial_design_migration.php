@@ -13,6 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
+        Schema::create('users', function (Blueprint $table) {
+            $table->id();
+            $table->string('name')->nullable();
+            $table->varchar('email')->nullable();
+            $table->timestamps('email_verified_at');
+            $table->varchar('password', 255)->nullable();
+            $table->varchar('remember_token', 100)->nullable();
+            $table->timestamps('created_at');
+            $table->timestamps('updated_at');
+        ]);
+        
         Schema::create('student', function (Blueprint $table) {
             $table->id();
             $table->string('student_id')->nullable();
@@ -106,6 +117,7 @@ return new class extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('users');
         Schema::dropIfExists('student');
         Schema::dropIfExists('learning_plan');
         Schema::dropIfExists('criterion');
