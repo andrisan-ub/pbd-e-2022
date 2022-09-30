@@ -4,9 +4,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
-class RealDataSeeder extends Seeder
+class syllabus extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,36 +14,6 @@ class RealDataSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
-            'id' => 001,
-            'name' => "Bionka",
-            'email_verified_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'password' => "bionka123",
-            'remember_token' => "exampletoken",
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
-        ]);
-
-        DB::table('student')->insert([
-            'id' => '1111',
-            'student_id' => '205150701011024'
-        ]);
-
-        DB::table('student')->insert([
-            'id' => '2222',
-            'student_id' => '205150701011025'
-        ]);
-
-        DB::table('student')->insert([
-            'id' => '3333',
-            'student_id' => '205150701011026'
-        ]);
-
-        DB::table('student')->insert([
-            'id' => '4444',
-            'student_id' => '205150701011027'
-        ]);
-        
         DB::table('syllabus')->insert([
             'course_id' => '01',
             'name' => 'Konsep Pemrograman Basis Data dan Rencana Projek Akhir Kelompok',
@@ -72,15 +41,6 @@ class RealDataSeeder extends Seeder
             'author' => 'Issa Arwani, S.Kom, M.Sc',
             'head_of_study_program' => 'Widhy Hayuhardhika N.P,S.Kom., M.Kom.'
         ]);
-        
-        DB::table('student')->insert([
-            'id' => '215150700111006',
-            'student_id' => 'Mei'
-        ]);
 
-        DB::table('student')->insert([
-            'id' => '215150701111023',
-            'student_id' => 'Loey'
-        ]);
     }
 }
