@@ -15,6 +15,16 @@ class RealDataSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('users')->insert([
+            'id' => 001,
+            'name' => "Bionka",
+            'email_verified_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'password' => "bionka123",
+            'remember_token' => "exampletoken",
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
+        ]);
+
         DB::table('student')->insert([
             'id' => '1111',
             'student_id' => '205150701011024'
