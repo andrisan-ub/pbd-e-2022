@@ -13,6 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
+        Schema::create('student', function (Blueprint $table) {
+            $table->id();
+            $table->string('student_id')->nullable();
+        ]);
+        
         Schema::create('learning_plan', function (Blueprint $table) {
             $table->id();
             $table->integer('week_number')->nullable();
@@ -101,6 +106,7 @@ return new class extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('student');
         Schema::dropIfExists('learning_plan');
         Schema::dropIfExists('criterion');
         Schema::dropIfExists('course');
