@@ -15,6 +15,11 @@ class RealDataSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('Faculty')->insert([
+            'id' => 123,
+            'name' => "Fakultas Ilmu Komputer",
+        ]);
+        
         DB::table('study_program')->insert([
             'id' => 54321,
             'faculty_id' => 12345,
