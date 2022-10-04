@@ -13,13 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('syllabus', function (Blueprint $table) {
-            $table->id('id');
-            $table->bigInteger('course_id')->unsigned();
-            $table->string('name');
-            $table->text('author')->nullable();
-            $table->string('head_of_study_program',512)->nullable();
-        });
+
     }
 
     /**
@@ -29,6 +23,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('syllabus');
+
     }
 };
