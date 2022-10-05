@@ -30,6 +30,7 @@ return new class extends Migration
      */
     public function down()
     {
+        
         Schema::dropIfExists('course_learning_outcome');
     }
 };
