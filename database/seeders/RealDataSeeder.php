@@ -129,5 +129,20 @@ class RealDataSeeder extends Seeder
             'id' => '215150701111023',
             'student_id' => 'Loey'
         ]);
+
+        DB::table('Faculty')->insert([
+            'id' => 234,
+            'name' => "Fakultas Teknik",
+        ]);
+
+        DB::table('Faculty')->insert([
+            'id' => 456,
+            'name' => "Fakultas Kedokteran",
+        ]);
+
+        DB::table('Faculty')->insert([
+            'id' => 234,
+            'name' => "Fakultas Ilmu Budaya",
+        ]);
     }
 }
