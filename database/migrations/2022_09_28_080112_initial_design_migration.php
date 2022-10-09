@@ -32,19 +32,31 @@ return new class extends Migration
             $table->timestamps('created_at');
             $table->timestamps('updated_at');
     });
-
+    
         Schema::create('student', function (Blueprint $table) {
             $table->id();
             $table->string('student_id')->nullable();
     });
+        
+        Schema::create('learning_plan', function (Blueprint $table) {
+            $table->id();
+            $table->integer('week_number')->nullable();
+            $table->varchar('title',2048)->nullable();
+            $table->text('description')->nullable();
+            $table->varchar('estimated_time',1024)->nullable();
+            $table->integer('created_at');
+            $table->integer('updated_at')->nullable();
+            });
+            
 
         Schema::create('criterion', function (Blueprint $table) {
             $table->id();
             $table->string('title', 1024)->nullable();
             $table->string('description', 1024)->nullable();
             $table->float('max_point')->nullable();
-    });
-    
+        });
+       
+   
         Schema::create('course', function (Blueprint $table) {
             $table->id();
             $table->string('name');
@@ -60,8 +72,8 @@ return new class extends Migration
             $table->integer('update_at');
             $table->bigInteger('study_program_id');
             $table->bigInteger('creator_user_id');
-    });
-
+        });
+        
         Schema::create('grading_plan', function (Blueprint $table) {
             $table->id();
             $table->foreign('learning_plan_id')->references('id')->on('learning_plan');
@@ -110,6 +122,22 @@ return new class extends Migration
             $table->timestamps();
         });
 
+        Schema::create('table_lesson_learning_outcome', function (Blueprint $table) {
+            $table->id();
+            $table->integer('clo_id');
+            $table->foreign('clo_id')->references('id')->on('course_learning_outcome');
+            $table->integer('position')->nullable();
+            $table->text('description')->nullable();
+        });
+
+        Schema::create('table_lesson_learning_outcome', function (Blueprint $table) {
+            $table->id();
+            $table->integer('clo_id');
+            $table->foreign('clo_id')->references('id')->on('course_learning_outcome');
+            $table->integer('position')->nullable();
+            $table->text('description')->nullable();
+        });
+        
         Schema::create('criterion_level', function (Blueprint $table) {
             $table->id();
             $table->float('point');
