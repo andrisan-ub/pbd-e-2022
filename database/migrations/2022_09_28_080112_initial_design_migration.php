@@ -22,29 +22,20 @@ return new class extends Migration
             $table->varchar('remember_token', 100)->nullable();
             $table->timestamps('created_at');
             $table->timestamps('updated_at');
-        ]);
-        
+    });
+
         Schema::create('student', function (Blueprint $table) {
             $table->id();
             $table->string('student_id')->nullable();
-        ]);
-        
-        Schema::create('learning_plan', function (Blueprint $table) {
-            $table->id();
-            $table->integer('week_number')->nullable();
-            $table->varchar('title',2048)->nullable();
-            $table->text('description')->nullable();
-            $table->varchar('estimated_time',1024)->nullable();
-            $table->integer('created_at');
-            $table->integer('updated_at')->nullable();
-            
+    });
+
         Schema::create('criterion', function (Blueprint $table) {
             $table->id();
             $table->string('title', 1024)->nullable();
             $table->string('description', 1024)->nullable();
             $table->float('max_point')->nullable();
-        ]);
-        
+    });
+    
         Schema::create('course', function (Blueprint $table) {
             $table->id();
             $table->string('name');
@@ -60,13 +51,14 @@ return new class extends Migration
             $table->integer('update_at');
             $table->bigInteger('study_program_id');
             $table->bigInteger('creator_user_id');
-        ]);
-        
+    });
+
         Schema::create('grading_plan', function (Blueprint $table) {
             $table->id();
             $table->foreign('learning_plan_id')->references('id')->on('learning_plan');
             $table->foreign('criterion_id')->references('id')->on('criterion');
-            
+        });
+
         Schema::create('assignment', function (Blueprint $table) {
             $table->id();
             $table->integer('llo_id');
@@ -85,7 +77,7 @@ return new class extends Migration
             $table->integer('updated_at');
             $table->timestamps();
         });
-        
+
         Schema::create('faculty', function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable();
@@ -108,13 +100,22 @@ return new class extends Migration
             $table->integer('updated_at')->nullable();
             $table->timestamps();
         });
-    }
+
+        Schema::create('criterion_level', function (Blueprint $table) {
+            $table->id();
+            $table->float('point');
+            $table->string('title',1024)->nullable();
+            $table->text('description')->nullable();;
+        });
+
+    }    
 
     /**
      * Reverse the migrations.
      *
      * @return void
      */
+
     public function down()
     {
         Schema::dropIfExists('users');
@@ -127,5 +128,6 @@ return new class extends Migration
         Schema::dropIfExists('faculty');
         Schema::dropIfExists('class');
         Schema::dropIfExists('study_program');
+        Schema::dropIfExists('criterion_level');
     }
 };
