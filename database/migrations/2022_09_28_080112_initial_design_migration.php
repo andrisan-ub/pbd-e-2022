@@ -13,6 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
+        Schema::create('course_learning_outcome', function (Blueprint $table) {
+            $table->id();
+            $table->bigInteger('syllabus_id');
+            $table->foreign('syllabus_id')->references('id')->on('syllabus');
+            $table->integer('position')->nullable();
+            $table->text('description')->nullable();
+            $table->timestamps();
+        });
+        
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable();
@@ -23,7 +32,7 @@ return new class extends Migration
             $table->timestamps('created_at');
             $table->timestamps('updated_at');
     });
-        
+    
         Schema::create('student', function (Blueprint $table) {
             $table->id();
             $table->string('student_id')->nullable();
@@ -37,14 +46,17 @@ return new class extends Migration
             $table->varchar('estimated_time',1024)->nullable();
             $table->integer('created_at');
             $table->integer('updated_at')->nullable();
+            });
             
+
         Schema::create('criterion', function (Blueprint $table) {
             $table->id();
             $table->string('title', 1024)->nullable();
             $table->string('description', 1024)->nullable();
             $table->float('max_point')->nullable();
         });
-        
+       
+   
         Schema::create('course', function (Blueprint $table) {
             $table->id();
             $table->string('name');
@@ -66,7 +78,8 @@ return new class extends Migration
             $table->id();
             $table->foreign('learning_plan_id')->references('id')->on('learning_plan');
             $table->foreign('criterion_id')->references('id')->on('criterion');
-        });    
+        });
+
         Schema::create('assignment', function (Blueprint $table) {
             $table->id();
             $table->integer('llo_id');
@@ -85,7 +98,7 @@ return new class extends Migration
             $table->integer('updated_at');
             $table->timestamps();
         });
-        
+
         Schema::create('faculty', function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable();
@@ -124,15 +137,25 @@ return new class extends Migration
             $table->integer('position')->nullable();
             $table->text('description')->nullable();
         });
-    }
+        
+        Schema::create('criterion_level', function (Blueprint $table) {
+            $table->id();
+            $table->float('point');
+            $table->string('title',1024)->nullable();
+            $table->text('description')->nullable();;
+        });
+
+    }    
 
     /**
      * Reverse the migrations.
      *
      * @return void
      */
+
     public function down()
     {
+        Schema::dropIfExists('course_learning_outcome');
         Schema::dropIfExists('users');
         Schema::dropIfExists('student');
         Schema::dropIfExists('learning_plan');
@@ -143,5 +166,6 @@ return new class extends Migration
         Schema::dropIfExists('faculty');
         Schema::dropIfExists('class');
         Schema::dropIfExists('study_program');
+        Schema::dropIfExists('criterion_level');
     }
 };
