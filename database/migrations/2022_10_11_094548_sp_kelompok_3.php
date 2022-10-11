@@ -65,7 +65,7 @@ return new class extends Migration
                 description);
         end";
         DB::unprepared($query);
-        
+
         //READ
 
 
@@ -98,6 +98,7 @@ return new class extends Migration
         //CREATE
         DB::unprepared("DROP PROCEDURE IF EXISTS `kelompok3_insert_join_class`");
         DB::unprepared("DROP PROCEDURE IF EXISTS `kelompok3_insert_criterion`");
+        DB::unprepared("DROP PROCEDURE IF EXISTS `kelompok3_insert_criterion_level`");
 
         //READ
 
