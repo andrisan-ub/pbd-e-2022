@@ -70,7 +70,13 @@ return new class extends Migration
 
 
         //UPDATE
-
+        $procedure = "DROP PROCEDURE IF EXISTS `kelompok3_sp_update_join_class`;
+        create procedure kelompok1_sp_update_join_class(in p_id bigint, in up_student_user_id bigint, in up_course_class_id bigint)
+        begin
+            update join_class set student_user_id = up_student_user_id, course_class_id = up_course_class_id
+            where id = p_id;
+        END";
+        DB::unprepared($procedure);
 
         //DELETE
         $query = "DROP PROCEDURE IF EXISTS `kelompok3_delete_join_class`;
