@@ -22,6 +22,14 @@ return new class extends Migration
             end";
         DB::unprepared($query);
 
+        $query = "DROP PROCEDURE IF EXISTS `kelompok3_insert_criterion_level`;
+        CREATE PROCEDURE kelompok3_insert_criterion_level(IN criterion_id BIGINT(20), IN point DOUBLE(8,2), IN title VARCHAR(1024), IN description TEXT)
+        begin 
+	    insert into criterion_level( criterion_id, point, title, description )
+	    value( criterion_id, point, title, description ); 
+        end";
+        DB::unprepared($query);
+
         $query = "drop procedure if exists `kelompok3_insert_criterion`;
         create procedure kelompok3_insert_criterion(
             in id bigint, 
@@ -52,15 +60,15 @@ return new class extends Migration
 
         //UPDATE
         $procedure = "DROP PROCEDURE IF EXISTS `kelompok3_sp_update_join_class`;
-        create procedure kelompok1_sp_update_join_class(in p_id bigint, in up_student_user_id bigint, in up_course_class_id bigint)
+        create procedure kelompok3_sp_update_join_class(in p_id bigint, in up_student_user_id bigint, in up_course_class_id bigint)
         begin
             update join_class set student_user_id = up_student_user_id, course_class_id = up_course_class_id
             where id = p_id;
         END";
         DB::unprepared($procedure);
 
-        $query = "DROP PROCEDURE IF EXIST 'kelompok3_insert_criterion_level';
-        create procedure kelompok3_insert_criterion_level(in up_id bigint, in up_criterion_id bigint, in up_point double(8,2), in up_title varchar(1024), in up_description text)
+        $query = "DROP PROCEDURE IF EXIST 'kelompok3_update_criterion_level';
+        create procedure kelompok3_update_criterion_level(in up_id bigint, in up_criterion_id bigint, in up_point double(8,2), in up_title varchar(1024), in up_description text)
             begin
                 update criterion_level set criterion_id = up_criterion_id , point = up_point, title = up_title, description = up_description
                 where id = up_id;
@@ -109,13 +117,14 @@ return new class extends Migration
         //CREATE
         DB::unprepared("DROP PROCEDURE IF EXISTS `kelompok3_insert_join_class`");
         DB::unprepared("DROP PROCEDURE IF EXISTS `kelompok3_insert_criterion`");
+        DB::unprepared("DROP PROCEDURE IF EXISTS `kelompok3_insert_criterion_level`");
         
 
         //READ
 
 
         //UPDATE
-
+        DB::unprepared("DROP PROCEDURE IF EXISTS `kelompok3_update_criterion_level`");
 
         //DELETE
         DB::unprepared("DROP PROCEDURE IF EXISTS `kelompok3_delete_join_class`");
