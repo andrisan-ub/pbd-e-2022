@@ -52,22 +52,22 @@ return new class extends Migration
             );
         end";
         DB::unprepared($query);
-        
-       
+
+
 
         //READ
 
 
         //UPDATE
-        $procedure = "DROP PROCEDURE IF EXISTS `kelompok3_sp_update_join_class`;
-        create procedure kelompok3_sp_update_join_class(in p_id bigint, in up_student_user_id bigint, in up_course_class_id bigint)
+        $procedure = "DROP PROCEDURE IF EXISTS `kelompok3_update_join_class`;
+        create procedure kelompok3_update_join_class(in p_id bigint, in up_student_user_id bigint, in up_course_class_id bigint)
         begin
             update join_class set student_user_id = up_student_user_id, course_class_id = up_course_class_id
             where id = p_id;
         END";
         DB::unprepared($procedure);
 
-        $query = "DROP PROCEDURE IF EXIST 'kelompok3_update_criterion_level';
+        $query = "DROP PROCEDURE IF EXISTS `kelompok3_update_criterion_level`;
         create procedure kelompok3_update_criterion_level(in up_id bigint, in up_criterion_id bigint, in up_point double(8,2), in up_title varchar(1024), in up_description text)
             begin
                 update criterion_level set criterion_id = up_criterion_id , point = up_point, title = up_title, description = up_description
@@ -83,16 +83,15 @@ return new class extends Migration
             end";
         DB::unprepared($query);
 
-        $query = "DROP PROCEDURE IF EXIST 'kelompok3_criterion'
-        create procedure kelompok3_criterion(in del_title varchar(1024))
+        $query = "DROP PROCEDURE IF EXISTS `kelompok3_delete_criterion`;
+        create procedure kelompok3_delete_criterion(in in_id bigint)
             begin
-                delete from criterion
-                where title = del_title;
+                delete from criterion where id = in_id;
             end";
         DB::unprepared($query);
 
         //CONDITION
-        $query = "DROP PROCEDURE IF EXIST 'kelompok3_condition_student_grade'
+        $query = "DROP PROCEDURE IF EXISTS `kelompok3_condition_student_grade`;
         create procedure kelompok3_condition_student_grade(in assigment_id bigint)
             begin
                 if assignment_id = 1 then
@@ -118,18 +117,21 @@ return new class extends Migration
         DB::unprepared("DROP PROCEDURE IF EXISTS `kelompok3_insert_join_class`");
         DB::unprepared("DROP PROCEDURE IF EXISTS `kelompok3_insert_criterion`");
         DB::unprepared("DROP PROCEDURE IF EXISTS `kelompok3_insert_criterion_level`");
-        
+
 
         //READ
 
 
         //UPDATE
         DB::unprepared("DROP PROCEDURE IF EXISTS `kelompok3_update_criterion_level`");
+        DB::unprepared("DROP PROCEDURE IF EXISTS `kelompok3_update_join_class`");
 
         //DELETE
         DB::unprepared("DROP PROCEDURE IF EXISTS `kelompok3_delete_join_class`");
+        DB::unprepared("DROP PROCEDURE IF EXISTS `kelompok3_delete_criterion`");
 
         //CONDITION
+        DB::unprepared("DROP PROCEDURE IF EXISTS `kelompok3_condition_student_grade`");
 
 
         //LOOP
