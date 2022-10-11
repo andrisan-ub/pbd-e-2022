@@ -48,8 +48,8 @@ return new class extends Migration
         //READ
         // menampilkan data nama course, week number, id llo, description, study material, learning method, dan estimated time
         // dengan relasi 4 tabel
-        $procedure = "DROP PROCEDURE IF EXISTS `kelompok3_sp_read_matriks`;
-        create procedure kelompok3_sp_read_matriks()
+        $procedure = "DROP PROCEDURE IF EXISTS `kelompok3_read_matriks`;
+        create procedure kelompok3_read_matriks()
         begin
             select course.name, learning_plan.week_number, learning_plan.llo_id, lesson_learning_outcome.description, 
             learning_plan.study_material, learning_plan.learning_method, learning_plan.estimated_time
@@ -123,11 +123,12 @@ return new class extends Migration
 
 
         //READ
+        DB::unprepared("DROP PROCEDURE IF EXISTS `kelompok3_read_matriks`");
 
 
         //UPDATE
-        DB::unprepared("DROP PROCEDURE IF EXISTS `kelompok3_update_criterion_level`");
         DB::unprepared("DROP PROCEDURE IF EXISTS `kelompok3_update_join_class`");
+        DB::unprepared("DROP PROCEDURE IF EXISTS `kelompok3_update_criterion_level`");
 
         //DELETE
         DB::unprepared("DROP PROCEDURE IF EXISTS `kelompok3_delete_join_class`");
