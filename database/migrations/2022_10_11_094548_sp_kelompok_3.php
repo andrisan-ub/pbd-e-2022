@@ -22,14 +22,6 @@ return new class extends Migration
             end";
         DB::unprepared($query);
 
-        $query = "DROP PROCEDURE IF EXISTS `kelompok3_insert_criterion_level`;
-        CREATE PROCEDURE kelompok3_insert_criterion_level(IN criterion_id BIGINT(20), IN point DOUBLE(8,2), IN title VARCHAR(1024), IN description TEXT)
-        begin 
-	    insert into criterion_level( criterion_id, point, title, description )
-	    value( criterion_id, point, title, description ); 
-        end";
-        DB::unprepared($query);
-
         $query = "drop procedure if exists `kelompok3_insert_criterion`;
         create procedure kelompok3_insert_criterion(
             in id bigint, 
@@ -53,10 +45,21 @@ return new class extends Migration
         end";
         DB::unprepared($query);
 
-
-
         //READ
-
+        // menampilkan data nama course, week number, id llo, description, study material, learning method, dan estimated time
+        // dengan relasi 4 tabel
+        $procedure = "DROP PROCEDURE IF EXISTS `kelompok3_sp_read_matriks`;
+        create procedure kelompok3_sp_read_matriks()
+        begin
+            select course.name, learning_plan.week_number, learning_plan.llo_id, lesson_learning_outcome.description, 
+            learning_plan.study_material, learning_plan.learning_method, learning_plan.estimated_time
+            from learning_plan
+            join lesson_learning_outcome on lesson_learning_outcome.id = learning_plan.llo_id
+            join syllabus on syllabus.id = learning_plan.syllabus_id
+            join course on course.id = syllabus.course_id
+            where llo_id = 2;
+            end";
+        DB::unprepared($procedure);
 
         //UPDATE
         $procedure = "DROP PROCEDURE IF EXISTS `kelompok3_update_join_class`;
