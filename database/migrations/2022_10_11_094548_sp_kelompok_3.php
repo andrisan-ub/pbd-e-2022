@@ -111,6 +111,40 @@ return new class extends Migration
             end";
         DB::unprepared($query);
 
+        $query = "drop procedure if exists `kelompok3_score_per_class`;
+        create procedure kelompok3_score_per_class(in_user_id bigint, in_class_id bigint) 
+        begin
+            select u.id, u.name, 
+        c.name as course, 
+        ap.title as `nama tugas`, 
+        sg.id as `sg.id`, 
+        cc.id as `class id`, 
+        cl.`point` as `nilai`, 
+        c2.max_point as `nilai max`, 
+        case 
+            when (cl.`point`/c2.max_point) > 0.80 then 'A'
+            when (cl.`point`/c2.max_point) > 0.75 then 'B+'
+            when (cl.`point`/c2.max_point) > 0.69 then 'B'
+            when (cl.`point`/c2.max_point) > 0.60 then 'C+'
+            when (cl.`point`/c2.max_point) > 0.55 then 'C'
+            when (cl.`point`/c2.max_point) > 0.50 then 'D+'
+            when (cl.`point`/c2.max_point) > 0.44 then 'D'
+            else 'E'
+        end as `nilai huruf`
+        from users u 
+            inner join student_info si on si.id = u.id
+            right join join_class jc on jc.student_user_id = si.id
+            left join course_class cc on jc.course_class_id = cc.id
+            left join course c on c.id = cc.course_id
+            left join `assignment` a on a.course_class_id = cc.id
+            left join assignment_plan ap on ap.id = a.assignment_plan_id 
+            left join student_grade sg ON sg.assignment_id = a.id and si.id = sg.student_user_id
+            left join criterion_level cl on cl.id = sg.criterion_level_id
+            left join criterion c2 on c2.id = cl.criterion_id
+            where u.id = in_user_id and cc.id = in_class_id;
+        end";
+        DB::unprepared($query);
+
 
         //LOOP
 
@@ -144,6 +178,8 @@ return new class extends Migration
 
         //CONDITION
         DB::unprepared("DROP PROCEDURE IF EXISTS `kelompok3_condition_student_grade`");
+        DB::unprepared("drop procedure if exists `kelompok3_score_per_class`");
+
 
 
         //LOOP
