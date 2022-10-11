@@ -14,6 +14,7 @@ return new class extends Migration
      */
     public function up()
     {
+        //CREATE
         $query = "DROP PROCEDURE IF EXISTS `insert_join_class`;
         create procedure insert_join_class(in student_user_id bigint, in course_class_id bigint)
             begin
@@ -21,12 +22,26 @@ return new class extends Migration
             end";
         DB::unprepared($query);
 
+        //READ
+
+
+        //UPDATE
+
+
+        //DELETE
         $query = "DROP PROCEDURE IF EXISTS `delete_join_class`;
         create procedure delete_join_class(in su_id bigint, in cc_id bigint)
             begin
                 delete from `join_class` where student_user_id = su_id and course_class_id = cc_id;
             end";
         DB::unprepared($query);
+
+        //CONDITION
+
+
+        //LOOP
+
+
     }
 
     /**
@@ -36,7 +51,23 @@ return new class extends Migration
      */
     public function down()
     {
+        //CREATE
         DB::unprepared("DROP PROCEDURE IF EXISTS `insert_join_class`");
+
+        //READ
+
+
+        //UPDATE
+
+
+        //DELETE
         DB::unprepared("DROP PROCEDURE IF EXISTS `delete_join_class`");
+
+        //CONDITION
+
+
+        //LOOP
+
+
     }
 };
