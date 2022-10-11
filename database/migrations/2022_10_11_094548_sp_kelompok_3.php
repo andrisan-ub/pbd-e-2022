@@ -45,26 +45,7 @@ return new class extends Migration
         end";
         DB::unprepared($query);
         
-        $query = "DROP PROCEDURE IF EXISTS `kelompok3_insert_criterion_level`;
-
-        create procedure kelompok3_insert_criterion_level(
-            in criterion_id,
-            in point,
-            in title,
-            in description)
-        begin
-            insert into criterion_level(
-               criterion_id,
-                point,
-                title,
-                description
-            ) value(
-               criterion_id,
-                point,
-                title,
-                description);
-        end";
-        DB::unprepared($query);
+       
 
         //READ
 
@@ -128,7 +109,7 @@ return new class extends Migration
         //CREATE
         DB::unprepared("DROP PROCEDURE IF EXISTS `kelompok3_insert_join_class`");
         DB::unprepared("DROP PROCEDURE IF EXISTS `kelompok3_insert_criterion`");
-        DB::unprepared("DROP PROCEDURE IF EXISTS `kelompok3_insert_criterion_level`");
+        
 
         //READ
 
