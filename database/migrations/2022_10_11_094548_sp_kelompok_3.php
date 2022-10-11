@@ -44,34 +44,27 @@ return new class extends Migration
             );
         end";
         DB::unprepared($query);
-        
-        $query = "DROP PROCEDURE IF EXISTS `kelompok3_insert_join_class`;
-
-        create procedure kelompok3_insert_criterion_level(
-            in criterion_id,
-            in point,
-            in title,
-            in description)
-        begin
-            insert into criterion_level(
-               criterion_id,
-                point,
-                title,
-                description
-            ) value(
-               criterion_id,
-                point,
-                title,
-                description);
-        end";
-        DB::unprepared($query);
 
         //READ
-
+        // menampilkan data nama course, week number, id llo, description, study material, learning method, dan estimated time
+        // dengan relasi 4 tabel
+        $procedure = "DROP PROCEDURE IF EXISTS `kelompok3_sp_read_matriks`;
+        create procedure kelompok3_sp_read_matriks()
+        begin
+            select course.name, learning_plan.week_number, learning_plan.llo_id, lesson_learning_outcome.description, 
+            learning_plan.study_material, learning_plan.learning_method, learning_plan.estimated_time
+            from learning_plan
+            join lesson_learning_outcome on lesson_learning_outcome.id = learning_plan.llo_id
+            join syllabus on syllabus.id = learning_plan.syllabus_id
+            join course on course.id = syllabus.course_id
+            where llo_id = 2;
+            end";
+        DB::unprepared($procedure);
 
         //UPDATE
+        // update di tabel join_class
         $procedure = "DROP PROCEDURE IF EXISTS `kelompok3_sp_update_join_class`;
-        create procedure kelompok1_sp_update_join_class(in p_id bigint, in up_student_user_id bigint, in up_course_class_id bigint)
+        create procedure kelompok3_sp_update_join_class(in p_id bigint, in up_student_user_id bigint, in up_course_class_id bigint)
         begin
             update join_class set student_user_id = up_student_user_id, course_class_id = up_course_class_id
             where id = p_id;
@@ -87,7 +80,7 @@ return new class extends Migration
         DB::unprepared($query);
 
         //CONDITION
-
+        
 
         //LOOP
 
@@ -104,7 +97,6 @@ return new class extends Migration
         //CREATE
         DB::unprepared("DROP PROCEDURE IF EXISTS `kelompok3_insert_join_class`");
         DB::unprepared("DROP PROCEDURE IF EXISTS `kelompok3_insert_criterion`");
-        DB::unprepared("DROP PROCEDURE IF EXISTS `kelompok3_insert_criterion_level`");
 
         //READ
 
