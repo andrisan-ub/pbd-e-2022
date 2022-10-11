@@ -20,6 +20,13 @@ return new class extends Migration
                 insert into join_class(student_user_id, course_class_id) value(student_user_id, course_class_id);
             end";
         DB::unprepared($query);
+
+        $query = "DROP PROCEDURE IF EXISTS `delete_join_class`;
+        create procedure delete_join_class(in su_id bigint, in cc_id bigint)
+            begin
+                delete from `join_class` where student_user_id = su_id and course_class_id = cc_id;
+            end";
+        DB::unprepared($query);
     }
 
     /**
@@ -30,5 +37,6 @@ return new class extends Migration
     public function down()
     {
         DB::unprepared("DROP PROCEDURE IF EXISTS `insert_join_class`");
+        DB::unprepared("DROP PROCEDURE IF EXISTS `delete_join_class`");
     }
 };
