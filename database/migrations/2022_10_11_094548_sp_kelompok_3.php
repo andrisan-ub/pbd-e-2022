@@ -94,19 +94,20 @@ return new class extends Migration
             end";
         DB::unprepared($query);
 
-        $query = "DROP PROCEDURE IF EXISTS `kelompok3_delete_criterion`;
-        create procedure kelompok3_delete_criterion(in in_id bigint)
+        $query = "DROP PROCEDURE IF EXISTS `kelompok3_delete_student_grade`;
+        create procedure kelompok3_delete_student_grade(in in_id bigint)
             begin
-                delete from criterion where id = in_id;
+                delete from student_grade where id = in_id;
             end";
         DB::unprepared($query);
 
         //CONDITION
         $query = "DROP PROCEDURE IF EXISTS `kelompok3_condition_student_grade`;
-        create procedure kelompok3_condition_student_grade(in assigment_id bigint)
+        create procedure kelompok3_condition_student_grade(in in_assigment_id bigint)
             begin
-                if assignment_id = 1 then
-                    select * from student_grade;
+                if assignment_id = in_assignment_id then
+                    select * from student_grade where 
+                    assignment_id = in_assignment_id;
                 end if;
             end";
         DB::unprepared($query);
@@ -174,7 +175,8 @@ return new class extends Migration
 
         //DELETE
         DB::unprepared("DROP PROCEDURE IF EXISTS `kelompok3_delete_join_class`");
-        DB::unprepared("DROP PROCEDURE IF EXISTS `kelompok3_delete_criterion`");
+        DB::unprepared("DROP PROCEDURE IF EXISTS `kelompok3_delete_student_grade`");
+        
 
         //CONDITION
         DB::unprepared("DROP PROCEDURE IF EXISTS `kelompok3_condition_student_grade`");
