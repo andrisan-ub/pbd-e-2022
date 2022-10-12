@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         //melihat jumlah departemen yang dimiliki sebuah fakultas, dari fakultas src sampai fakultas des
-        $procedure = "DROP PROCEDURE IF EXISTS `whileFacultyDepartment`;
-            CREATE PROCEDURE `whileFacultyDepartment` (IN src INT, IN des INT)
+        $procedure = "DROP PROCEDURE IF EXISTS `kel5_whileFacultyDepartment`;
+            CREATE PROCEDURE `kel5_whileFacultyDepartment` (IN src INT, IN des INT)
             BEGIN
             DECLARE i,j INT;
             SET i = src;
