@@ -176,7 +176,7 @@ return new class extends Migration
     {
         //CREATE
         DB::unprepared("DROP PROCEDURE IF EXISTS `kelompok3_insert_join_classes`");
-        DB::unprepared("drop procedure if exists  `kelompok3_insert_criterion_levels`");
+        DB::unprepared("drop procedure if exists  `kelompok3_insert_criteria_levels`");
         DB::unprepared("drop procedure if exists `kelompok3_insert_criterias`");
 
 
@@ -191,7 +191,7 @@ return new class extends Migration
 
 
         //DELETE
-        DB::unprepared("DROP PROCEDURE IF EXISTS `kelompok3_delete_join_class`");
+        DB::unprepared("DROP PROCEDURE IF EXISTS `kelompok3_delete_join_classes`");
         // DB::unprepared("DROP PROCEDURE IF EXISTS `kelompok3_delete_criterias`"); //foreign key error, fix pls
         DB::unprepared("DROP PROCEDURE IF EXISTS `kelompok3_delete_student_info`");
 
