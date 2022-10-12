@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         //melihat llo id dipelajari di minggu ke berapa untuk llo id n sampai llo id m
-        $procedure = "DROP PROCEDURE IF EXISTS `lloForNWeek`;
-            CREATE PROCEDURE `lloForNWeek` (IN n INT, IN m INT)
+        $procedure = "DROP PROCEDURE IF EXISTS `kel5_lloForNWeek`;
+            CREATE PROCEDURE `kel5_lloForNWeek` (IN n INT, IN m INT)
             BEGIN
                 WHILE (n <= m) DO
                 SELECT week_number, lesson_learning_outcome.id
