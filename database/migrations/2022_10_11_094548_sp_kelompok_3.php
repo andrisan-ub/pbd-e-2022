@@ -114,12 +114,12 @@ return new class extends Migration
             end";
         DB::unprepared($query);
 
-        // $query = "DROP PROCEDURE IF EXISTS `kelompok3_delete_criterias`;
-        // create procedure kelompok3_delete_criterias(in in_id bigint)
-        //     begin
-        //         delete from criterias where id = in_id;
-        //     end";
-        // DB::unprepared($query); //foreign key error
+        $query = "DROP PROCEDURE IF EXISTS `kelompok3_delete_student_grade`;
+        create procedure kelompok3_delete_student_grade(in in_id bigint)
+            begin
+                delete from student_grade where id = in_id;
+            end";
+        DB::unprepared($query);
 
         $query = "DROP PROCEDURE IF EXISTS `kelompok3_delete_student_info`;
         CREATE PROCEDURE `kelompok3_delete_student_info`(IN `in_id` BIGINT(20) UNSIGNED)
@@ -129,14 +129,16 @@ return new class extends Migration
         DB::unprepared($query);
 
         //CONDITION
-        // $query = "DROP PROCEDURE IF EXISTS `kelompok3_condition_student_grades`;
-        // create procedure kelompok3_condition_student_grades(in assigment_id bigint)
-        //     begin
-        //         if assignment_id = 1 then
-        //             select * from student_grades;
-        //         end if;
-        //     end";
-        // DB::unprepared($query); //error, fix pls
+        $query = "DROP PROCEDURE IF EXISTS `kelompok3_condition_student_grade`;
+        create procedure kelompok3_condition_student_grade(in in_assigment_id bigint)
+            begin
+                if assignment_id = in_assignment_id then
+                    select * from student_grade where 
+                    assignment_id = in_assignment_id;
+                end if;
+            end";
+        DB::unprepared($query);
+
 
         $query = "drop procedure if exists `kelompok3_score_per_class`;
         create procedure kelompok3_score_per_class(in_user_id bigint, in_class_id bigint) 
@@ -226,8 +228,9 @@ return new class extends Migration
 
         //DELETE
         DB::unprepared("DROP PROCEDURE IF EXISTS `kelompok3_delete_join_classes`");
-        // DB::unprepared("DROP PROCEDURE IF EXISTS `kelompok3_delete_criterias`"); //foreign key error, fix pls
+        DB::unprepared("DROP PROCEDURE IF EXISTS `kelompok3_delete_student_grade`");
         DB::unprepared("DROP PROCEDURE IF EXISTS `kelompok3_delete_student_info`");
+
 
         //CONDITION
         // DB::unprepared("DROP PROCEDURE IF EXISTS `kelompok3_condition_student_grades`"); //error, fix pls liat di up()
