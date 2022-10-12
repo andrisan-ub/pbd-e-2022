@@ -79,6 +79,16 @@ return new class extends Migration
         end";
         DB::unprepared($procedure);
 
+        $procedure = "DROP PROCEDURE IF EXISTS `kelompok3_sp_read_title_llo`;
+        create procedure kelompok3_sp_read_title_llo()
+        begin
+            select rubrics.title, lesson_learning_outcomes.description
+            from rubrics
+            join criterias on criterias.rubric_id = rubrics.id
+            join lesson_learning_outcomes on lesson_learning_outcomes.id = criterias.llo_id;
+        end";
+        DB::unprepared($procedure);
+
         //UPDATE
         $procedure = "DROP PROCEDURE IF EXISTS `kelompok3_update_join_classes`;
         create procedure kelompok3_update_join_classes(in p_id bigint, in up_student_user_id bigint, in up_course_class_id bigint)
@@ -165,7 +175,7 @@ return new class extends Migration
         // //LOOP
 
         //menampilkan jumlah pengguna, mahasiswa, dan non mahasiswa
-        $query = "drop PROCEDURE if EXISTS kelompok3_number_of_users;
+        $query = "drop PROCEDURE if EXISTS number_of_users;
         create procedure number_of_users()
         begin 
             DECLARE cur_end, `jumlah mahasiswa`, `jumlah pengguna`, `u_id`, `sd_id` int;
@@ -206,6 +216,7 @@ return new class extends Migration
         //READ
         DB::unprepared("DROP PROCEDURE IF EXISTS `kelompok3_read_matriks`");
         DB::unprepared("DROP PROCEDURE IF EXISTS `kelompok3_read_course_user`");
+        DB::unprepared("DROP PROCEDURE IF EXISTS `kelompok3_sp_read_title_llo`");
 
 
         //UPDATE
@@ -225,6 +236,6 @@ return new class extends Migration
 
 
         //LOOP
-        DB::unprepared("drop PROCEDURE if EXISTS kelompok3_number_of_users");
+        DB::unprepared("drop PROCEDURE if EXISTS number_of_users");
     }
 };
