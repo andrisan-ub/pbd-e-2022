@@ -177,8 +177,8 @@ return new class extends Migration
         // //LOOP
 
         //menampilkan jumlah pengguna, mahasiswa, dan non mahasiswa
-        $query = "drop PROCEDURE if EXISTS number_of_users;
-        create procedure number_of_users()
+        $query = "drop PROCEDURE if EXISTS kelompok3_number_of_users;
+        create procedure kelompok3_number_of_users()
         begin 
             DECLARE cur_end, `jumlah mahasiswa`, `jumlah pengguna`, `u_id`, `sd_id` int;
             DECLARE cur_1 cursor for select u.id as `u_id`, sd.id as `sd_id` from users u left join student_data sd on u.id = sd.id;
@@ -233,12 +233,12 @@ return new class extends Migration
 
 
         //CONDITION
-        // DB::unprepared("DROP PROCEDURE IF EXISTS `kelompok3_condition_student_grades`"); //error, fix pls liat di up()
+        DB::unprepared("DROP PROCEDURE IF EXISTS `kelompok3_condition_student_grade`");
         DB::unprepared("drop procedure if exists `kelompok3_score_per_class`");
 
 
 
         //LOOP
-        DB::unprepared("drop PROCEDURE if EXISTS number_of_users");
+        DB::unprepared("drop PROCEDURE if EXISTS kelompok3_number_of_users");
     }
 };
