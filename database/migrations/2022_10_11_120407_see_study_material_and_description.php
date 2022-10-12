@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         //melihat study_material dan deskripsinya dari llo dengan id ke n sampai llo id ke m
-        $procedure = "DROP PROCEDURE IF EXISTS `seeStudyMaterianAndDescription`;
-            CREATE PROCEDURE `seeStudyMaterianAndDescription` (IN n INT,IN m INT)
+        $procedure = "DROP PROCEDURE IF EXISTS `kel5_seeStudyMaterianAndDescription`;
+            CREATE PROCEDURE `kel5_seeStudyMaterianAndDescription` (IN n INT,IN m INT)
             BEGIN
                 WHILE (n <= m) DO
                 SELECT lesson_learning_outcome.id, learning_plan.study_material, lesson_learning_outcome.description
