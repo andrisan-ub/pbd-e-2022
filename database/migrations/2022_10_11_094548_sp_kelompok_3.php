@@ -173,6 +173,29 @@ return new class extends Migration
         end";
         DB::unprepared($query);
 
+        $query = "DROP PROCEDURE IF EXISTS `kelompok3_condition_point_student`;
+        create procedure kelompok3_condition_point_student()
+            begin
+                select u.name as nama_mahasiswa, c.name as nama_matkul, sum(cl.`point`) as nilai,
+                case
+                    when sum(cl.`point`) > 80 then 'A'
+                    when sum(cl.`point`) > 75 then 'B+'
+                    when sum(cl.`point`) > 69 then 'B'
+                    when sum(cl.`point`) > 60 then 'C+'
+                    when sum(cl.`point`) > 55 then 'C'
+                    when sum(cl.`point`) > 50 then 'D+'
+                    when sum(cl.`point`) > 44 then 'D'
+                    else 'E'
+                end as `nilai huruf`
+                from student_grades  sg
+                join users u on u.id = sg.student_user_id
+                join criteria_levels cl on cl.id = sg.criteria_level_id
+                join join_classes jc on jc.student_user_id = u.id
+                join course_classes cc on cc.id = jc.course_class_id
+                join courses c on c.id = cc.course_id
+                group by u.name, c.name;
+            end";
+        DB::unprepared($query);
 
         // //LOOP
 
@@ -235,8 +258,7 @@ return new class extends Migration
         //CONDITION
         DB::unprepared("DROP PROCEDURE IF EXISTS `kelompok3_condition_student_grade`");
         DB::unprepared("drop procedure if exists `kelompok3_score_per_class`");
-
-
+        DB::unprepared("drop procedure IF EXISTS `kelompok3_condition_point_student`");
 
         //LOOP
         DB::unprepared("drop PROCEDURE if EXISTS kelompok3_number_of_users");
