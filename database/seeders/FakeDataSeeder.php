@@ -8,8 +8,8 @@ use App\Models\AssignmentPlanTask;
 use App\Models\Course;
 use App\Models\CourseClass;
 use App\Models\CourseLearningOutcome;
-use App\Models\Criterion;
-use App\Models\CriterionLevel;
+use App\Models\Criteria;
+use App\Models\CriteriaLevel;
 use App\Models\Department;
 use App\Models\Faculty;
 use App\Models\GradingPlan;
@@ -18,7 +18,7 @@ use App\Models\LearningPlan;
 use App\Models\LessonLearningOutcome;
 use App\Models\Rubric;
 use App\Models\StudentGrade;
-use App\Models\StudentInfo;
+use App\Models\StudentData;
 use App\Models\StudyProgram;
 use App\Models\Syllabus;
 use App\Models\User;
@@ -60,25 +60,31 @@ class FakeDataSeeder extends Seeder
                             'course_id' => $course->id,
                         ])->each(function ($syllabus) {
                             $nIntendedOutcome = 5;
-                            $ilos = IntendedLearningOutcome::factory($nIntendedOutcome)->create([
-                                'syllabus_id' => $syllabus->id,
-                            ]);
+                            $ilos = array();
+                            foreach (range(1, $nIntendedOutcome) as $i) {
+                                $ilos[] = IntendedLearningOutcome::factory()->create([
+                                    'syllabus_id' => $syllabus->id,
+                                    'position' => $i,
+                                ]);
+                            }
 
                             $nCourseOutcome = 6;
                             $courceOutcomeMap = $this->rangeWithN(0, count($ilos) - 1, $nCourseOutcome);
                             $clos = array();
-                            foreach ($courceOutcomeMap as $idx) {
+                            foreach ($courceOutcomeMap as $key => $iloIdx) {
                                 $clos[] = CourseLearningOutcome::factory()->create([
-                                    'ilo_id' => $ilos[$idx]->id,
+                                    'ilo_id' => $ilos[$iloIdx]->id,
+                                    'position' => $key + 1,
                                 ]);
                             }
 
                             $nLessonOutcome = 10;
                             $lessonOutcomeMap = $this->rangeWithN(0, count($clos) - 1, $nLessonOutcome);
                             $llos = array();
-                            foreach ($lessonOutcomeMap as $idx) {
+                            foreach ($lessonOutcomeMap as $key => $cloidx) {
                                 $llos[] = LessonLearningOutcome::factory()->create([
-                                    'clo_id' => $clos[$idx]->id,
+                                    'clo_id' => $clos[$cloidx]->id,
+                                    'position' => $key + 1,
                                 ]);
                             }
                             // convert array to laravel collection
@@ -87,10 +93,11 @@ class FakeDataSeeder extends Seeder
                             $nLearningPlan = 16;
                             $learningPlanMap = $this->rangeWithN(0, count($llos) - 1, $nLearningPlan);
                             $learningPlans = array();
-                            foreach ($learningPlanMap as $idx) {
+                            foreach ($learningPlanMap as $key => $lloIdx) {
                                 $learningPlans[] = LearningPlan::factory()->create([
                                     'syllabus_id' => $syllabus->id,
-                                    'llo_id' => $llos[$idx]->id,
+                                    'week_number' => $key + 1,
+                                    'llo_id' => $llos[$lloIdx]->id,
                                 ]);
                             }
                             $learningPlans = collect($learningPlans);
@@ -110,8 +117,8 @@ class FakeDataSeeder extends Seeder
                                 ]);
 
                                 $numberOfAssignmentPlanTasks = count($assignmentPlanTasks);
-                                $criterionMaxPoint = 100/$numberOfAssignments;
-                                $criterionMaxPoint /= $numberOfAssignmentPlanTasks;
+                                $criteriaMaxPoint = 100/$numberOfAssignments;
+                                $criteriaMaxPoint /= $numberOfAssignmentPlanTasks;
 
                                 foreach ($assignmentPlanTasks as $assignmentPlanTask) {
                                     GradingPlan::factory()->create([
@@ -119,22 +126,21 @@ class FakeDataSeeder extends Seeder
                                         'assignment_plan_task_id' => $assignmentPlanTask->id,
                                     ]);
 
-                                    $criterion = Criterion::factory()->create([
+                                    $criteria = Criteria::factory()->create([
                                         'rubric_id' => $rubric->id,
                                         'llo_id' => $learningPlans[$learningPlanIdx]->llo_id,
-                                        'max_point' => $criterionMaxPoint,
+                                        'max_point' => $criteriaMaxPoint,
                                     ]);
 
-                                    $point = range($criterionMaxPoint, 1);
+                                    $point = range($criteriaMaxPoint, 1);
                                     foreach ($point as $p) {
-                                        CriterionLevel::factory(1)->create([
-                                            'criterion_id' => $criterion->id,
+                                        CriteriaLevel::factory(1)->create([
+                                            'criteria_id' => $criteria->id,
                                             'point' => $p,
                                         ]);
                                     }
 
-                                    // assign each criterion to an assignment task
-                                    $assignmentPlanTask->criterion_id = $criterion->id;
+                                    $assignmentPlanTask->criteria_id = $criteria->id;
                                     $assignmentPlanTask->save();
                                     $learningPlanIdx++;
                                 }
@@ -147,7 +153,7 @@ class FakeDataSeeder extends Seeder
                         ])->each(function ($course_class) use ($course, $teachers) {
                             $studentsJoinThisClass = User::factory(rand(30, 40))->create()
                                 ->each(function ($student) {
-                                    StudentInfo::factory()->create([
+                                    StudentData::factory()->create([
                                         'id' => $student->id
                                     ]);
                                 });
@@ -170,20 +176,20 @@ class FakeDataSeeder extends Seeder
 
                                 foreach ($studentsJoinThisClass as $student){
                                     foreach ($assignmentPlanTasks as $assignmentPlanTask) {
-                                        $criterion = $assignmentPlanTask->criterion;
-                                        $criterionLevels = $criterion->criterionLevels;
+                                        $criteria = $assignmentPlanTask->criteria;
+                                        $criteriaLevels = $criteria->criteriaLevels;
 
                                         if (in_array($student, $studentWithGoodGrade)) {
-                                            $criterionLevel = $criterionLevels->get(rand(0, 1));
+                                            $criteriaLevel = $criteriaLevels->get(rand(0, 1));
                                         } else {
-                                            $criterionLevel = $criterionLevels->random(1)->first();
+                                            $criteriaLevel = $criteriaLevels->random(1)->first();
                                         }
 
                                         StudentGrade::factory(1)->create([
                                             'student_user_id' => $student->id,
                                             'assignment_id' => $assignment->id,
-                                            'assignment_plan_task_id' => $assignmentPlanTask->criterion_id,
-                                            'criterion_level_id' => $criterionLevel->id,
+                                            'assignment_plan_task_id' => $assignmentPlanTask->criteria_id,
+                                            'criteria_level_id' => $criteriaLevel->id,
                                         ]);
                                     }
                                 }

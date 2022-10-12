@@ -9,7 +9,5 @@ class Department extends Model
 {
     use HasFactory;
 
-    public $table = 'department';
-
     public $timestamps = false;
 }
