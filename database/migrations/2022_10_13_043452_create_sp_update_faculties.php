@@ -23,7 +23,7 @@ return new class extends Migration
                 where id=p_id;
             END;";
   
-        \DB::unprepared($procedure);
+
         
     }
 
