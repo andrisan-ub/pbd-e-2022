@@ -133,7 +133,7 @@ return new class extends Migration
         $query = "DROP PROCEDURE IF EXISTS `kelompok3_delete_student_info`;
         CREATE PROCEDURE `kelompok3_delete_student_info`(IN `in_id` BIGINT(20) UNSIGNED)
             begin
-                DELETE FROM student_info WHERE id = in_id;
+                DELETE FROM student_data WHERE id = in_id;
             end";
         DB::unprepared($query);
 
