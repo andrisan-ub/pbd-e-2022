@@ -19,10 +19,11 @@ return new class extends Migration
             IN id BIGINT(20),
             IN course_id BIGINT(20),
             IN name VARCHAR(1024)
+
         )
         BEGIN
-        insert into course_classes(id, course_id, name)
-        value (id,course_id,name);
+        insert into course_classes(id,course_id, name, thumbnail_img, class_code,creator_user_id)
+        value (id,course_id,name,null,class_code,2);
         END";
 
         DB::unprepared($store_procedure);
