@@ -126,7 +126,7 @@ return new class extends Migration
         $query = "DROP PROCEDURE IF EXISTS `kelompok3_delete_student_grade`;
         create procedure kelompok3_delete_student_grade(in in_id bigint)
             begin
-                delete from student_grade where id = in_id;
+                delete from student_grades where id = in_id;
             end";
         DB::unprepared($query);
 
