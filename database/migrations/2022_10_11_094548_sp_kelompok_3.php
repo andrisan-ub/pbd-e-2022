@@ -283,6 +283,6 @@ return new class extends Migration
         
         
         //LOOP
-        DB::unprepared("drop PROCEDURE if EXISTS number_of_users");
+        DB::unprepared("drop PROCEDURE if EXISTS kelompok3_number_of_users");
     }
 };
