@@ -243,6 +243,29 @@ return new class extends Migration
             select `jumlah pengguna`, `jumlah mahasiswa`, (`jumlah pengguna` - `jumlah mahasiswa`) as `jumlah non mahasiswa`;
         end";
         DB::unprepared($query);
+
+        //Menampilkan jumlah departemen didalam fakultas
+        $query = "drop procedure if exists kelompok3_faculty_data;
+        create procedure kelompok3_faculty_data(in_id bigint(20))
+        begin 
+            declare cur_end_1, id_fakultas, id_departement, jumlah_departement bigint(20);
+            declare nama_fakultas, nama_departement varchar(1024);
+            declare cur_1 cursor for select f.id, f.name, d.id, d.name from faculties f join departments d on d.faculty_id = f.id where f.id = in_id;
+            DECLARE continue handler for not found set cur_end_1=1;
+            set jumlah_departement = 0;
+            open cur_1;
+            while cur_end_1 is null DO 
+                if id_departement is not null then 
+                    set jumlah_departement = jumlah_departement + 1;
+                end if;
+            
+                fetch cur_1 into id_fakultas, nama_fakultas, id_departement, nama_departement;
+            end while;
+            close cur_1;
+        
+            select id_fakultas, nama_fakultas, jumlah_departement;
+        end";
+        DB::unprepared($query);
     }
 
     /**
@@ -284,5 +307,6 @@ return new class extends Migration
         
         //LOOP
         DB::unprepared("drop PROCEDURE if EXISTS kelompok3_number_of_users");
+        DB::unprepared("drop PROCEDURE if EXISTS kelompok3_faculty_data");
     }
 };
