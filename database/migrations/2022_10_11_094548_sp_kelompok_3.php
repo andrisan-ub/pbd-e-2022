@@ -266,6 +266,31 @@ return new class extends Migration
             select id_fakultas, nama_fakultas, jumlah_departement;
         end";
         DB::unprepared($query);
+
+        // menampilkan jumlah mahasiswa sesuai kelas yang diinputkan di parameter
+        $procedure = "drop PROCEDURE if EXISTS kelompok3_looping_count_student;
+        create procedure kelompok3_looping_count_student(in_cc bigint)
+        begin 
+            declare `jumlah mahasiswa`, cur_end, student_user_id, `class id`  bigint(20);
+            declare `c name` varchar(1024);
+            DECLARE cur_1 cursor for select cc.id as `class id`, cc.name as `c name`, 
+            jc.student_user_id as `student_user_id` from join_classes jc 
+                join course_classes cc on jc.course_class_id = cc.id 
+                where cc.id = in_cc;
+            DECLARE continue handler for not found set cur_end=1;
+            set `jumlah mahasiswa` = 0;
+            open cur_1;
+            while cur_end is null DO 
+                if student_user_id is not null then
+                    set `jumlah mahasiswa` = `jumlah mahasiswa` + 1;
+                end if;
+                fetch cur_1 into `class id`, `c name`, student_user_id;
+            end while;
+            close cur_1;
+            select in_cc as 'id kelas', `c name` as `nama kelas`,`jumlah mahasiswa` as 'jumlah mahasiswa';
+        end";
+        DB::unprepared($procedure);
+
     }
 
     /**
@@ -308,5 +333,6 @@ return new class extends Migration
         //LOOP
         DB::unprepared("drop PROCEDURE if EXISTS kelompok3_number_of_users");
         DB::unprepared("drop PROCEDURE if EXISTS kelompok3_faculty_data");
+        DB::unprepared("drop PROCEDURE if EXISTS kelompok3_looping_count_student");
     }
 };
