@@ -106,6 +106,17 @@ return new class extends Migration
             end";
         DB::unprepared($query);
 
+        $query = "DROP PROCEDURE IF EXISTS `kelompok3_update_criterias`;
+        create procedure kelompok3_update_criterias(in p_id bigint, in up_title VARCHAR(1024), in up_description VARCHAR(1024), in up_max_point double(8,2))
+        begin
+            update criterias 
+            set title = up_title, description = up_description, max_point = up_max_point
+            where id = p_id;
+        end";
+        DB::unprepared($query);
+
+
+
         //DELETE
         $query = "DROP PROCEDURE IF EXISTS `kelompok3_delete_join_classes`;
         create procedure kelompok3_delete_join_classes(in su_id bigint, in cc_id bigint)
@@ -185,7 +196,6 @@ return new class extends Migration
         end";
         DB::unprepared($query);
 
-        $query = "DROP PROCEDURE IF EXISTS `kelompok3_condition_point_student`;
         create procedure kelompok3_condition_point_student()
             begin
                 select u.name as nama_mahasiswa, c.name as nama_matkul, sum(cl.`point`) as nilai,
@@ -203,11 +213,6 @@ return new class extends Migration
                 join users u on u.id = sg.student_user_id
                 join criteria_levels cl on cl.id = sg.criteria_level_id
                 join join_classes jc on jc.student_user_id = u.id
-                join course_classes cc on cc.id = jc.course_class_id
-                join courses c on c.id = cc.course_id
-                group by u.name, c.name;
-            end";
-        DB::unprepared($query);
 
         // //LOOP
 
@@ -235,9 +240,6 @@ return new class extends Migration
             select `jumlah pengguna`, `jumlah mahasiswa`, (`jumlah pengguna` - `jumlah mahasiswa`) as `jumlah non mahasiswa`;
         end";
         DB::unprepared($query);
-
-        
-
     }
 
     /**
@@ -262,6 +264,7 @@ return new class extends Migration
         //UPDATE
         DB::unprepared("DROP PROCEDURE IF EXISTS `kelompok3_update_join_classes`");
         DB::unprepared("DROP PROCEDURE IF EXISTS `kelompok3_update_criteria_levels`");
+        DB::unprepared("DROP PROCEDURE IF EXISTS `kelompok3_update_criterias`");
 
 
         //DELETE
@@ -273,11 +276,10 @@ return new class extends Migration
         //CONDITION
         DB::unprepared("DROP PROCEDURE IF EXISTS `kelompok3_condition_nilai_siswa`");
         DB::unprepared("drop procedure if exists `kelompok3_score_per_class`");
-        DB::unprepared("drop procedure IF EXISTS `kelompok3_condition_point_student`");
 
+        
+        
         //LOOP
-        DB::unprepared("drop PROCEDURE if EXISTS kelompok3_number_of_users");
-        
-        
+        DB::unprepared("drop PROCEDURE if EXISTS number_of_users");
     }
 };
