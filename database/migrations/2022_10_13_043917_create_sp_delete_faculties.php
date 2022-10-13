@@ -22,8 +22,7 @@ return new class extends Migration
                 delete from faculties
                 where id = dr_id;
             END;";
-  
-        \DB::unprepared($procedure);
+
         
     }
     /**
