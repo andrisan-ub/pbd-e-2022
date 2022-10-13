@@ -13,15 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        $procedure = "DROP PROCEDURE IF EXISTS `Sp_delete_data_learning_plans`;
-            CREATE PROCEDURE `Sp_delete_data_learning_plans` (
-                dr_id bigint(20)
-            )
-            BEGIN
-                delete from learning_plans 
-                where id = dr_id;
-            END;";
-        
+        Schema::create('sp_update_data_syllabi', function (Blueprint $table) {
+            $table->id();
+            $table->timestamps();
+        });
     }
 
     /**
@@ -31,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('_sp__delete__data_learning_plans');
+        Schema::dropIfExists('sp_update_data_syllabi');
     }
 };
