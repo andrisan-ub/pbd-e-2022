@@ -17,8 +17,8 @@ return new class extends Migration
         $store_procedure = "DROP PROCEDURE IF EXISTS `kelompok6_tmplmhsA_classid`;
         CREATE PROCEDURE `kelompok6_tmplmhsA_classid`()
         BEGIN
-        SELECT name,course_class_id FROM `users` join join_classes on users.id=join_classes.id 
-        WHERE name LIKE 'A%';
+            SELECT name,course_class_id FROM `users` join join_classes on users.id=join_classes.id 
+            WHERE name LIKE 'A%';
         END";
 
         DB::unprepared($store_procedure);
