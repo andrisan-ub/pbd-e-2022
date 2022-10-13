@@ -22,8 +22,6 @@ return new class extends Migration
                 update learning_plans set learning_method=up_learning_method
                 where id=p_id;
             END;";
-  
-        \DB::unprepared($procedure);
         
     }
 

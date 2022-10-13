@@ -29,8 +29,6 @@ return new class extends Migration
                 insert into learning_plans
                 values(in_id, in_syllabus_id, in_week_number, in_llo_id, in_study_material, in_learning_method, in_estimated_time, in_created_at, in_updated_at);
             END;";
-  
-        \DB::unprepared($procedure);
         
     }
 

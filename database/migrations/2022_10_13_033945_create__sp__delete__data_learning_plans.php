@@ -21,8 +21,6 @@ return new class extends Migration
                 delete from learning_plans 
                 where id = dr_id;
             END;";
-  
-        \DB::unprepared($procedure);
         
     }
 
