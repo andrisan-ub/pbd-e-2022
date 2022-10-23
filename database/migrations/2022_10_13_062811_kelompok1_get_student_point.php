@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         $procedure = "DROP PROCEDURE IF EXISTS `kelompok1_getStudentPoint`;
-        CREATE PROCEDURE `sp_getStudentPoint` (IN min_point int, IN max_point int)
+        CREATE PROCEDURE `kelompok1_getStudentPoint` (IN min_point int, IN max_point int)
         BEGIN
             WHILE (min_point <= max_point) DO
                 SELECT u.name, SUM(cl.point) as point
@@ -39,6 +39,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sp_getStudentPoint');
+        Schema::dropIfExists('kelompok1_get_student_point');
     }
 };
