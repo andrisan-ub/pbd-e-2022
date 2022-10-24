@@ -14,7 +14,7 @@ return new class extends Migration
      */
     public function up()
     {
-        $procedure = "DROP PROCEDURE IF EXISTS 'kelompok1_menampilkan_tugas_kelas_tertentu';
+        $procedure = "DROP PROCEDURE IF EXISTS 'infoTugas';
         CREATE PROCEDURE 'infoTugas'(in_inp int)
         BEGIN
             SELECT asg.id as id_tugas, course_classes.name as nama_kelas, asg.assigned_date, asg.due_date, assignment_plans.objective, assignment_plans.title
