@@ -14,7 +14,7 @@ return new class extends Migration
      */
     public function up()
     {
-        $procedure = "DROP PROCEDURE IF EXISTS 'kelompok1_update_password';
+        $procedure = "DROP PROCEDURE IF EXISTS 'updatePasswordUser';
         CREATE PROCEDURE 'updatePasswordUser'(in_id int, in_name varchar(1024), in_password varchar(255))
         BEGIN
             UPDATE users SET password = in_password
