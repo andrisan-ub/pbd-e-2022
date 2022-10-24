@@ -14,7 +14,7 @@ return new class extends Migration
      */
     public function up()
     {
-        $procedure = "DROP PROCEDURE IF EXISTS 'kelompok1_delete_data_join_class';
+        $procedure = "DROP PROCEDURE IF EXISTS 'deleteDataJoinClass';
         CREATE PROCEDURE 'deleteDataJoinClass'(in_inp int)
             BEGIN
                 DELETE FROM join_classes
