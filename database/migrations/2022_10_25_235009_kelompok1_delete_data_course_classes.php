@@ -14,13 +14,13 @@ return new class extends Migration
     public function up()
     {
         //
-        $procedure = "DROP PROCEDURE IF EXIST 'kelompok1_delete_data_students';
-        CREATE PROCEDURE 'kelompok1_delete_data_students'(
-            del_student_id varchar
+        $procedure = "DROP PROCEDURE IF EXIST 'kelompok1_delete_data_course_classes';
+        CREATE PROCEDURE 'kelompok1_delete_data_course_classes'(
+            dr_course_classes_id bigint
             )
-        BEGIN
-	        DELETE FROM students
-	        WHERE students.student_id = del_student_id;
+        BEGIN 
+            DELETE FROM student_grades
+            WHERE courses.id = course_classes.course_id
         END;";
         DB::unprepared($procedure);
     }
