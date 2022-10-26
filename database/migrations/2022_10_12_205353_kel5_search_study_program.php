@@ -14,7 +14,6 @@ return new class extends Migration
     public function up()
     {
         //mencari study program berdasarkan id
-        //mencari student dengan nilai n
         $procedure = "DROP PROCEDURE IF EXISTS `kel5_searchStudryProgram`;
         CREATE PROCEDURE `kel5_searchStudryProgram`(IN n INT)
     BEGIN
