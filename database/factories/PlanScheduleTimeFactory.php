@@ -17,13 +17,15 @@ class PlanScheduleTimeFactory extends Factory
      */
     public function definition()
     {
-        $waktu1 = date('H:i', rand(25200, 62964)) . ":00";
-        $waktu2 = date('H:i', rand(25200, 62964)) . ":00";
+        $jamMulai = date('H:i', rand(25200, 55800)) . ":00";
+        //waktu kuliah 50 menit, 100 menit atau 150 menit
+        $durasi = [3000, 6000, 9000];
+        $jamAkhir = date('H:i', strtotime($jamMulai, 0) +  $durasi[random_int(0, sizeof($durasi) - 1)]) . ":00";
         return [
             'plan_schedule_id' => PlanSchedule::factory(),
             'hari' => random_int(0, 6), //0=Minggu/Sunday
-            'jam_mulai' => min($waktu1, $waktu2),
-            'jam_akhir' => max($waktu1, $waktu2),
+            'jam_mulai' => $jamMulai,
+            'jam_akhir' => $jamAkhir,
         ];
     }
 }
