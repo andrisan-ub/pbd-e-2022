@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\PlanSchedule;
+use App\Models\StudentData;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,8 +18,10 @@ class PlanFactory extends Factory
      */
     public function definition()
     {
+        //many to many
         return [
-            //
+            'student_data_id' => StudentData::factory(),
+            'plan_shedule_id' => PlanSchedule::factory(),
         ];
     }
 }

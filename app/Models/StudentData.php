@@ -10,4 +10,15 @@ class StudentData extends Model
     use HasFactory;
 
     public $timestamps = false;
+    protected $guarded = ['id'];
+
+    public function planSchedule()
+    {
+        return $this->hasMany(PlanSchedule::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo('User', 'id', 'id');
+    }
 }

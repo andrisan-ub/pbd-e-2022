@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,6 +18,7 @@ class StudentDataFactory extends Factory
     public function definition()
     {
         return [
+            'id' => User::factory(),
             'student_id_number' => $this->faker->word(),
         ];
     }
