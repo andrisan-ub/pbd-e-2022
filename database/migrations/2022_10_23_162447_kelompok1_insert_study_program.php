@@ -14,8 +14,8 @@ return new class extends Migration
      */
     public function up()
     {
-        $procedure = "DROP PROCEDURE IF EXISTS 'insertDataStudyProgram';
-        CREATE PROCEDURE 'insertDataStudyProgram' (
+        $procedure = "DROP PROCEDURE IF EXISTS insertDataStudyProgram;
+        CREATE PROCEDURE insertDataStudyProgram (
             in_id bigint(20),
             in_departement_id bigint(20),
             in_name varchar(255)
@@ -24,9 +24,9 @@ return new class extends Migration
            INSERT INTO study_programs
            VALUES (in_id, in_departement_id, in_name);
         END;";
-        
 
-            DB::unprepared($procedure);
+
+        DB::unprepared($procedure);
     }
 
     /**

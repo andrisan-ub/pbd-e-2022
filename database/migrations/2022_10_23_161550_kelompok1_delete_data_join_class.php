@@ -14,14 +14,14 @@ return new class extends Migration
      */
     public function up()
     {
-        $procedure = "DROP PROCEDURE IF EXISTS 'deleteDataJoinClass';
-        CREATE PROCEDURE 'deleteDataJoinClass'(in_inp int)
+        $procedure = "DROP PROCEDURE IF EXISTS deleteDataJoinClass;
+        CREATE PROCEDURE deleteDataJoinClass(in_inp int)
             BEGIN
                 DELETE FROM join_classes
                 WHERE join_class.course_class_id = dr_course_class_id;
             END;";
 
-            DB::unprepared($procedure);
+        DB::unprepared($procedure);
     }
 
     /**

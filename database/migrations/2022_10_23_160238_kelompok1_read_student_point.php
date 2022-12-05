@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         $procedure = "DROP PROCEDURE IF EXISTS `kelompok1_readStudentPoint`;
-        CREATE PROCEDURE 'kelompok1_readStudentPoint'()
+        CREATE PROCEDURE kelompok1_readStudentPoint()
         BEGIN
             SELECT jc.course_class_id, u.name, SUM(cl.point) AS NILAI
             FROM join_classes jc, users u, criteria_levels cl
