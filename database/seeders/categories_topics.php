@@ -34,6 +34,11 @@ class categories_topics extends Seeder
             'name_topics' => 'K-Means',
             'create_date_topics' => '2022/12/06 5:37',
         ]);
+        DB::table('topics')->insert([
+            'id_category' => 3,
+            'name_topics' => 'Binary Search Tree',
+            'create_date_topics' => '2022/12/06 5:37',
+        ]);
 
         //Post
         DB::table('post')->insert([
@@ -53,6 +58,12 @@ class categories_topics extends Seeder
             'id_topics' => 1,
             'content_post' => 'Cara menentukan cluster yang paling tepat menggunakan python',
             'create_date_post' => '2022/12/10 3:15',
+        ]);
+        DB::table('post')->insert([
+            'id' => 3,
+            'id_topics' => 2,
+            'content_post' => 'Kalau dilakukan insert 20, 36, 5 bagaimana penempatan node nya?',
+            'create_date_post' => '2022/12/12 1:37',
         ]);
 
         //Reply
@@ -99,12 +110,28 @@ class categories_topics extends Seeder
             'content_reply' => 'Silhouette juga bisa',
             'create_date_reply' => '2022/12/11 1:15'
         ]);
+        DB::table('reply')->insert([
+            'id' => 7,
+            'id_post' => 4,
+            'content_reply' => '20 jadi root, 36 jadi Right Child, lalu 5 jadi Left Child',
+            'create_date_reply' => '2022/12/12 4:15'
+        ]);
+        DB::table('reply')->insert([
+            'id' => 4,
+            'id_post' => 4,
+            'content_reply' => 'dimasukkan sesuai urutan, mulai dari 20 jadi root, lalu 36 masuk ke kanan karena lebih besar, 5 masuk ke kiri karena lebih kecil',
+            'create_date_reply' => '2022/12/12 6:29'
+        ]);
 
 
         
         DB::table('users_has_topics')->insert([
             'id' => 2,
             'id_topics' => 1,
+        ]);
+        DB::table('users_has_topics')->insert([
+            'id' => 3,
+            'id_topics' => 2,
         ]);
     }
 }
