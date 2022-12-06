@@ -11,3 +11,5 @@
 4. Buat database baru dengan nama yang sesuai dengan konfigurasi database pada file .env 
 
 5. Jalankan perintah `php artisan migrate` untuk membuat tabel-tabel database
+
+6. Jalankan perintah `php artisan migrate --seed`
