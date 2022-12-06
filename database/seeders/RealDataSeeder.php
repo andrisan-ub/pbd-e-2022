@@ -441,7 +441,7 @@ class RealDataSeeder extends Seeder
         DB::table('exam_schedules')->insert([
             'id'=>1003,
             'room_id'=>6,
-            'course_class_id'=>13,
+            'course_class_id'=>3,
             'date'=>'2022-12-20',
             'start_time'=>'09:30:00',
             'end_time'=>'10:00:00'
