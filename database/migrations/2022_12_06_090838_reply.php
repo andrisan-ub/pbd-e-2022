@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('reply', function (Blueprint $table) {
             $table->id('id_reply');
+            $table->unsignedBigInteger('id');
+            $table->foreign('id')->references('id')->on('users');
             $table->unsignedBigInteger('id_post');
             $table->foreign('id_post')->references('id_post')->on('post');
             $table->string('content_reply');
