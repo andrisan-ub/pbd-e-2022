@@ -18,6 +18,7 @@ return new class extends Migration
             $table->text('pertanyaan');
             $table->text('jenis survey');
             $table->integer('skor');
+            $table->text('saran');
         });
     }
 
