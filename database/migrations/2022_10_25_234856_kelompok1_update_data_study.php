@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        $procedure = "DROP PROCEDURE IF EXIST kelompok1_update_dataStudy;
+        $procedure = "DROP PROCEDURE IF EXISTS kelompok1_update_dataStudy;
         CREATE PROCEDURE kelompok1_update_dataStudy(
             IN up_id bigint,
             IN up_name varchar(255)
