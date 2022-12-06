@@ -13,16 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        //
-        $procedure = "DROP PROCEDURE IF EXIST 'kelompok1_delete_data_course_classes';
-        CREATE PROCEDURE 'kelompok1_delete_data_course_classes'(
-            dr_course_classes_id bigint
-            )
-        BEGIN 
-            DELETE FROM student_grades
-            WHERE courses.id = course_classes.course_id
-        END;";
-        DB::unprepared($procedure);
+        Schema::create('end_times', function (Blueprint $table) {
+            $table->id();
+            $table->time('time');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -32,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('end_times');
     }
 };
