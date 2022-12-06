@@ -94,6 +94,31 @@ class RealDataSeeder extends Seeder
             'creator_user_id'=>1,
             'name'=>'B'
         ]);
+
+        DB::table('days')->insert([
+            'id'=>1,
+            'name'=>'Senin'
+        ]);
+
+        DB::table('days')->insert([
+            'id'=>2,
+            'name'=>'Selasa'
+        ]);
+
+        DB::table('days')->insert([
+            'id'=>3,
+            'name'=>'Rabu'
+        ]);
+
+        DB::table('days')->insert([
+            'id'=>4,
+            'name'=>'Kamis'
+        ]);
+
+        DB::table('days')->insert([
+            'id'=>5,
+            'name'=>'Jumat'
+        ]);
    
     }
 }
