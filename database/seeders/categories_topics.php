@@ -17,9 +17,17 @@ class categories_topics extends Seeder
      */
     public function run()
     {
+        // Categories
         DB::table('categories_topics')->insert([
             'name_category' => 'Data Mining',
         ]);
+        DB::table('categories_topics')->insert([
+            'name_category' => 'Pemrograman Basis Data',
+        ]);
+        DB::table('categories_topics')->insert([
+            'name_category' => 'Algoritma dan Struktur Data',
+        ]);
+
         DB::table('topics')->insert([
             'id_category' => 1,
             'name_topics' => 'K-Means',
