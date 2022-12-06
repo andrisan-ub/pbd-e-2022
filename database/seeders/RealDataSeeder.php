@@ -518,6 +518,132 @@ class RealDataSeeder extends Seeder
             'start_time'=>'13:30:00',
             'end_time'=>'14:00:00'
         ]);
+
+        DB::table('class_schedules')->insert([
+            'id'=>3001,
+            'room_id'=>1,
+            'course_class_id'=>1,
+            'day_id'=>1,
+            'start_id'=>1,
+            'end_id'=>1
+        ]);
+
+        DB::table('class_schedules')->insert([
+            'id'=>3002,
+            'room_id'=>2,
+            'course_class_id'=>2,
+            'day_id'=>1,
+            'start_id'=>2,
+            'end_id'=>2
+        ]);
+
+        DB::table('class_schedules')->insert([
+            'id'=>4001,
+            'room_id'=>3,
+            'course_class_id'=>8,
+            'day_id'=>1,
+            'start_id'=>3,
+            'end_id'=>3
+        ]);
+
+        DB::table('class_schedules')->insert([
+            'id'=>4002,
+            'room_id'=>4,
+            'course_class_id'=>9,
+            'day_id'=>2,
+            'start_id'=>3,
+            'end_id'=>3
+        ]);
+
+        DB::table('class_schedules')->insert([
+            'id'=>4003,
+            'room_id'=>5,
+            'course_class_id'=>10,
+            'day_id'=>2,
+            'start_id'=>4,
+            'end_id'=>4
+        ]);
+
+        DB::table('class_schedules')->insert([
+            'id'=>3003,
+            'room_id'=>6,
+            'course_class_id'=>3,
+            'day_id'=>2,
+            'start_id'=>5,
+            'end_id'=>5
+        ]);
+
+        DB::table('class_schedules')->insert([
+            'id'=>3004,
+            'room_id'=>7,
+            'course_class_id'=>4,
+            'day_id'=>3,
+            'start_id'=>4,
+            'end_id'=>4
+        ]);
+
+        DB::table('class_schedules')->insert([
+            'id'=>3005,
+            'room_id'=>8,
+            'course_class_id'=>5,
+            'day_id'=>3,
+            'start_id'=>5,
+            'end_id'=>5
+        ]);
+
+        DB::table('class_schedules')->insert([
+            'id'=>4004,
+            'room_id'=>9,
+            'course_class_id'=>11,
+            'day_id'=>3,
+            'start_id'=>6,
+            'end_id'=>6
+        ]);
+
+        DB::table('class_schedules')->insert([
+            'id'=>4005,
+            'room_id'=>10,
+            'course_class_id'=>12,
+            'day_id'=>4,
+            'start_id'=>5,
+            'end_id'=>5
+        ]);
+
+        DB::table('class_schedules')->insert([
+            'id'=>4006,
+            'room_id'=>11,
+            'course_class_id'=>13,
+            'day_id'=>4,
+            'start_id'=>6,
+            'end_id'=>6
+        ]);
+
+        DB::table('class_schedules')->insert([
+            'id'=>3006,
+            'room_id'=>12,
+            'course_class_id'=>6,
+            'day_id'=>4,
+            'start_id'=>7,
+            'end_id'=>7
+        ]);
+
+        DB::table('class_schedules')->insert([
+            'id'=>3007,
+            'room_id'=>13,
+            'course_class_id'=>7,
+            'day_id'=>5,
+            'start_id'=>7,
+            'end_id'=>7
+        ]);
+
+        DB::table('class_schedules')->insert([
+            'id'=>4007,
+            'room_id'=>14,
+            'course_class_id'=>14,
+            'day_id'=>5,
+            'start_id'=>8,
+            'end_id'=>8
+        ]);
    
     }
 }
