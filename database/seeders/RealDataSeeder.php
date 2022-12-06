@@ -255,72 +255,72 @@ class RealDataSeeder extends Seeder
    
         DB::table('end_times')->insert([
             'id'=>1,
-            'time'=>'07:00:00'
+            'time'=>'06:59:59'
         ]);
 
         DB::table('end_times')->insert([
             'id'=>2,
-            'time'=>'07:30:00'
+            'time'=>'06:29:59'
         ]);
 
         DB::table('end_times')->insert([
             'id'=>3,
-            'time'=>'08:00:00'
+            'time'=>'07:59:59'
         ]);
 
         DB::table('end_times')->insert([
             'id'=>4,
-            'time'=>'08:30:00'
+            'time'=>'07:29:59'
         ]);
 
         DB::table('end_times')->insert([
             'id'=>5,
-            'time'=>'09:00:00'
+            'time'=>'08:59:59'
         ]);
 
         DB::table('end_times')->insert([
             'id'=>6,
-            'time'=>'09:30:00'
+            'time'=>'08:29:59'
         ]);
 
         DB::table('end_times')->insert([
             'id'=>7,
-            'time'=>'10:00:00'
+            'time'=>'09:59:59'
         ]);
 
         DB::table('end_times')->insert([
             'id'=>8,
-            'time'=>'10:30:00'
+            'time'=>'09:29:59'
         ]);
 
         DB::table('end_times')->insert([
             'id'=>9,
-            'time'=>'11:00:00'
+            'time'=>'10:59:59'
         ]);
 
         DB::table('end_times')->insert([
             'id'=>10,
-            'time'=>'11:30:00'
+            'time'=>'10:29:59'
         ]);
 
         DB::table('end_times')->insert([
             'id'=>11,
-            'time'=>'12:00:00'
+            'time'=>'11:59:59'
         ]);
 
         DB::table('end_times')->insert([
             'id'=>12,
-            'time'=>'12:30:00'
+            'time'=>'11:29:59'
         ]);
 
         DB::table('end_times')->insert([
             'id'=>13,
-            'time'=>'13:00:00'
+            'time'=>'12:59:59'
         ]);
 
         DB::table('end_times')->insert([
             'id'=>14,
-            'time'=>'13:30:00'
+            'time'=>'12:29:59'
         ]);
 
         DB::table('rooms')->insert([
