@@ -21,18 +21,34 @@ class categories_topics extends Seeder
         DB::table('categories_topics')->insert([
             'name_category' => 'Data Mining',
         ]);
+
         DB::table('categories_topics')->insert([
             'name_category' => 'Pemrograman Basis Data',
         ]);
+
         DB::table('categories_topics')->insert([
             'name_category' => 'Algoritma dan Struktur Data',
         ]);
 
+        // Topics
         DB::table('topics')->insert([
             'id_category' => 1,
             'name_topics' => 'K-Means',
             'create_date_topics' => '2022/12/06 5:37',
         ]);
+
+        DB::table('topics')->insert([
+            'id_category' => 1,
+            'name_topics' => 'Manhattan',
+            'create_date_topics' => '2022/12/06 5:37',
+        ]);
+
+        DB::table('topics')->insert([
+            'id_category' => 1,
+            'name_topics' => 'KNN',
+            'create_date_topics' => '2022/12/06 5:37',
+        ]);
+        
         DB::table('post')->insert([
             'id' => 2,
             'id_topics' => 1,
