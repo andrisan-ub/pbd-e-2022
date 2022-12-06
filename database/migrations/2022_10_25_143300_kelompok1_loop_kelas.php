@@ -14,8 +14,8 @@ return new class extends Migration
      */
     public function up()
     {
-        $procedure = "DROP PROCEDURE IF EXISTS `kelompok1_loop_kelas`;
-        CREATE PROCEDURE 'kelompok1_loop_kelas' (in_input int)
+        $procedure = "DROP PROCEDURE IF EXISTS kelompok1_loop_kelas;
+        CREATE PROCEDURE kelompok1_loop_kelas (in_input int)
         BEGIN
         DECLARE v INT;
         SET v = 0;
@@ -32,7 +32,7 @@ return new class extends Migration
         END LOOP;
         END;";
 
-        DB::unprepared($procedure); 
+        DB::unprepared($procedure);
     }
 
     /**

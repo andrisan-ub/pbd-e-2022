@@ -14,15 +14,15 @@ return new class extends Migration
      */
     public function up()
     {
-        $procedure = "DROP PROCEDURE IF EXISTS 'updatePasswordUser';
-        CREATE PROCEDURE 'updatePasswordUser'(in_id int, in_name varchar(1024), in_password varchar(255))
+        $procedure = "DROP PROCEDURE IF EXISTS updatePasswordUser;
+        CREATE PROCEDURE updatePasswordUser(in_id int, in_name varchar(1024), in_password varchar(255))
         BEGIN
             UPDATE users SET password = in_password
             WHERE users.id = in_id
             AND users.name = in_name;
         END;";
 
-            DB::unprepared($procedure);
+        DB::unprepared($procedure);
     }
 
     /**

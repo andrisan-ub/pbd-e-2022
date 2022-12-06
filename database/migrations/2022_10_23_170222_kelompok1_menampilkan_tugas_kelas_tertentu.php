@@ -14,8 +14,8 @@ return new class extends Migration
      */
     public function up()
     {
-        $procedure = "DROP PROCEDURE IF EXISTS 'infoTugas';
-        CREATE PROCEDURE 'infoTugas'(in_inp int)
+        $procedure = "DROP PROCEDURE IF EXISTS infoTugas;
+        CREATE PROCEDURE infoTugas(in_inp int)
         BEGIN
             SELECT asg.id as id_tugas, course_classes.name as nama_kelas, asg.assigned_date, asg.due_date, assignment_plans.objective, assignment_plans.title
             FROM assignments asg
@@ -24,7 +24,7 @@ return new class extends Migration
             WHERE asg.course_class_id = in_inp;
         END;";
 
-            DB::unprepared($procedure);
+        DB::unprepared($procedure);
     }
 
     /**
