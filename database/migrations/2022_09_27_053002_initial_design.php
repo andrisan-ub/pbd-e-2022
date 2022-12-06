@@ -38,7 +38,7 @@ return new class extends Migration
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
             $table->foreignId('study_program_id')->constrained('study_programs');
-            $table->foreignId('creator_user_id')->constrained('users');
+            //$table->foreignId('creator_user_id')->constrained('users');
             $table->string('name')->nullable();
             $table->string('code')->unique()->nullable();
             $table->integer('course_credit')->nullable();
@@ -150,7 +150,7 @@ return new class extends Migration
             $table->string('name', 1024);
             $table->string('thumbnail_img', 1024)->nullable();
             $table->string('class_code', 256)->nullable();
-            $table->foreignId('creator_user_id')->constrained('users');
+            //$table->foreignId('creator_user_id')->constrained('users');
             $table->timestampsTz();
         });
 
