@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('start_times', function (Blueprint $table) {
             $table->id();
-            $table->time('time');
+            $table->time('time')->unique();
             $table->timestamps();
         });
     }
