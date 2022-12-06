@@ -77,85 +77,85 @@ class RealDataSeeder extends Seeder
         DB::table('course_classes')->insert([
             'id'=>1,
             'course_id'=>1,
-            'name'=>'A'
+            'name'=>'KWU - A'
         ]);
 
         DB::table('course_classes')->insert([
             'id'=>2,
             'course_id'=>2,
-            'name'=>'A'
+            'name'=>'ADSI - A'
         ]);
 
         DB::table('course_classes')->insert([
             'id'=>3,
             'course_id'=>3,
-            'name'=>'A'
+            'name'=>'JARKOM - A'
         ]);
 
         DB::table('course_classes')->insert([
             'id'=>4,
             'course_id'=>4,
-            'name'=>'A'
+            'name'=>'PBD - A'
         ]);
 
         DB::table('course_classes')->insert([
             'id'=>5,
             'course_id'=>5,
-            'name'=>'A'
+            'name'=>'ASD - A'
         ]);
 
         DB::table('course_classes')->insert([
             'id'=>6,
             'course_id'=>6,
-            'name'=>'A'
+            'name'=>'PAW - A'
         ]);
 
         DB::table('course_classes')->insert([
             'id'=>7,
             'course_id'=>7,
-            'name'=>'A'
+            'name'=>'ETPROF - A'
         ]);
 
         DB::table('course_classes')->insert([
             'id'=>8,
             'course_id'=>1,
-            'name'=>'B'
+            'name'=>'KWU - B'
         ]);
 
         DB::table('course_classes')->insert([
             'id'=>9,
             'course_id'=>2,
-            'name'=>'B'
+            'name'=>'ADSI - B'
         ]);
 
         DB::table('course_classes')->insert([
             'id'=>10,
             'course_id'=>3,
-            'name'=>'B'
+            'name'=>'JARKOM - B'
         ]);
 
         DB::table('course_classes')->insert([
             'id'=>11,
             'course_id'=>4,
-            'name'=>'B'
+            'name'=>'PBD - B'
         ]);
 
         DB::table('course_classes')->insert([
             'id'=>12,
             'course_id'=>5,
-            'name'=>'B'
+            'name'=>'ASD - B'
         ]);
 
         DB::table('course_classes')->insert([
             'id'=>13,
             'course_id'=>6,
-            'name'=>'B'
+            'name'=>'PAW - B'
         ]);
 
         DB::table('course_classes')->insert([
             'id'=>14,
             'course_id'=>7,
-            'name'=>'B'
+            'name'=>'ETPROF - B'
         ]);
 
         DB::table('days')->insert([
@@ -260,7 +260,7 @@ class RealDataSeeder extends Seeder
 
         DB::table('end_times')->insert([
             'id'=>2,
-            'time'=>'06:29:59'
+            'time'=>'07:29:59'
         ]);
 
         DB::table('end_times')->insert([
@@ -270,7 +270,7 @@ class RealDataSeeder extends Seeder
 
         DB::table('end_times')->insert([
             'id'=>4,
-            'time'=>'07:29:59'
+            'time'=>'08:29:59'
         ]);
 
         DB::table('end_times')->insert([
@@ -280,7 +280,7 @@ class RealDataSeeder extends Seeder
 
         DB::table('end_times')->insert([
             'id'=>6,
-            'time'=>'08:29:59'
+            'time'=>'09:29:59'
         ]);
 
         DB::table('end_times')->insert([
@@ -290,7 +290,7 @@ class RealDataSeeder extends Seeder
 
         DB::table('end_times')->insert([
             'id'=>8,
-            'time'=>'09:29:59'
+            'time'=>'10:29:59'
         ]);
 
         DB::table('end_times')->insert([
@@ -300,7 +300,7 @@ class RealDataSeeder extends Seeder
 
         DB::table('end_times')->insert([
             'id'=>10,
-            'time'=>'10:29:59'
+            'time'=>'11:29:59'
         ]);
 
         DB::table('end_times')->insert([
@@ -310,7 +310,7 @@ class RealDataSeeder extends Seeder
 
         DB::table('end_times')->insert([
             'id'=>12,
-            'time'=>'11:29:59'
+            'time'=>'12:29:59'
         ]);
 
         DB::table('end_times')->insert([
@@ -320,7 +320,7 @@ class RealDataSeeder extends Seeder
 
         DB::table('end_times')->insert([
             'id'=>14,
-            'time'=>'12:29:59'
+            'time'=>'13:29:59'
         ]);
 
         DB::table('rooms')->insert([
