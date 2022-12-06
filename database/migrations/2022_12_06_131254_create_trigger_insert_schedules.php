@@ -58,7 +58,7 @@ return new class extends Migration
                         SET MESSAGE_TEXT = errorMessage;
                     END IF;
                           
-                ;END
+                END
         ');
     }
 
