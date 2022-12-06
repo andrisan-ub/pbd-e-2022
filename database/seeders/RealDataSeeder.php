@@ -392,7 +392,132 @@ class RealDataSeeder extends Seeder
             'id'=>14,
             'name'=>'F4.4'
         ]);
+
+        DB::table('exam_schedules')->insert([
+            'id'=>1001,
+            'course_class_id'=>1,
+            'room_id'=>1,
+            'date'=>'2022-12-19',
+            'start_time'=>'6:30:00',
+            'end_time'=>'7:00:00'
+        ]);
+
+        DB::table('exam_schedules')->insert([
+            'id'=>1002,
+            'course_class_id'=>2,
+            'room_id'=>2,
+            'date'=>'2022-12-19',
+            'start_time'=>'7:00:00',
+            'end_time'=>'7:30:00'
+        ]);
+
+        DB::table('exam_schedules')->insert([
+            'id'=>2001,
+            'course_class_id'=>3,
+            'room_id'=>8,
+            'date'=>'2022-12-19',
+            'start_time'=>'7:30:00',
+            'end_time'=>'8:00:00'
+        ]);
+
+        DB::table('exam_schedules')->insert([
+            'id'=>2002,
+            'course_class_id'=>4,
+            'room_id'=>9,
+            'date'=>'2022-12-20',
+            'start_time'=>'8:00:00',
+            'end_time'=>'8:30:00'
+        ]);
+
+        DB::table('exam_schedules')->insert([
+            'id'=>2003,
+            'course_class_id'=>5,
+            'room_id'=>10,
+            'date'=>'2022-12-20',
+            'start_time'=>'8:30:00',
+            'end_time'=>'9:00:00'
+        ]);
+
+        DB::table('exam_schedules')->insert([
+            'id'=>1003,
+            'course_class_id'=>6,
+            'room_id'=>3,
+            'date'=>'2022-12-20',
+            'start_time'=>'9:30:00',
+            'end_time'=>'10:00:00'
+        ]);
+
+        DB::table('exam_schedules')->insert([
+            'id'=>1004,
+            'course_class_id'=>7,
+            'room_id'=>4,
+            'date'=>'2022-12-21',
+            'start_time'=>'10:00:00',
+            'end_time'=>'10:30:00'
+        ]);
    
+        DB::table('exam_schedules')->insert([
+            'id'=>1005,
+            'course_class_id'=>8,
+            'room_id'=>5,
+            'date'=>'2022-12-21',
+            'start_time'=>'10:30:00',
+            'end_time'=>'11:00:00'
+        ]);
+
+        DB::table('exam_schedules')->insert([
+            'id'=>2004,
+            'course_class_id'=>9,
+            'room_id'=>11,
+            'date'=>'2022-12-21',
+            'start_time'=>'11:00:00',
+            'end_time'=>'11:30:00'
+        ]);
+
+        DB::table('exam_schedules')->insert([
+            'id'=>2005,
+            'course_class_id'=>10,
+            'room_id'=>12,
+            'date'=>'2022-12-22',
+            'start_time'=>'11:30:00',
+            'end_time'=>'12:00:00'
+        ]);
+
+        DB::table('exam_schedules')->insert([
+            'id'=>2006,
+            'course_class_id'=>11,
+            'room_id'=>13,
+            'date'=>'2022-12-22',
+            'start_time'=>'12:00:00',
+            'end_time'=>'12:30:00'
+        ]);
+
+        DB::table('exam_schedules')->insert([
+            'id'=>1006,
+            'course_class_id'=>12,
+            'room_id'=>6,
+            'date'=>'2022-12-22',
+            'start_time'=>'12:30:00',
+            'end_time'=>'13:00:00'
+        ]);
+
+        DB::table('exam_schedules')->insert([
+            'id'=>1007,
+            'course_class_id'=>13,
+            'room_id'=>7,
+            'date'=>'2022-12-23',
+            'start_time'=>'13:00:00',
+            'end_time'=>'13:30:00'
+        ]);
+
+        DB::table('exam_schedules')->insert([
+            'id'=>2007,
+            'course_class_id'=>14,
+            'room_id'=>14,
+            'date'=>'2022-12-23',
+            'start_time'=>'13:30:00',
+            'end_time'=>'14:00:00'
+        ]);
    
     }
 }
