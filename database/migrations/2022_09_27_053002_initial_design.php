@@ -177,6 +177,25 @@ return new class extends Migration
             $table->foreignId('criteria_level_id')->constrained('criteria_levels');
             $table->timestampsTz();
         });
+
+        Schema::create('skm_points', function(Blueprint $table){
+            $table->id();
+            $table->string('kegiatan');
+            $table->string('tingkat');
+            $table->integer('point');
+        });
+
+        Schema::create('user_skm_points', function(Blueprint $table){
+            $table->id();
+            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('skm_point_id')->constrained('skm_points');
+        });
+
+        Schema::create('total_skm_points', function(Blueprint $table){
+            $table->id();
+            $table->foreignId('user_id')->constrained('users');
+            $table->integer('total_skm');
+        });        
     }
 
     /**
