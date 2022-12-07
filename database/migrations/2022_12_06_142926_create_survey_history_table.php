@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('survey_history', function (Blueprint $table) {
             $table->id();
-            $table->string('users_name');
+            $table->string('survey_pembelajaran_id');
             $table->text('action');
             $table->timestamp('date');
         });
