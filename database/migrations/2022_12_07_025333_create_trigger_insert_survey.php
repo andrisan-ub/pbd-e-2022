@@ -13,11 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::unprepared
-            ('CREATE TRIGGER `insert_survey` 
-            AFTER INSERT ON `survey_pembelajaran` 
-            FOR EACH ROW INSERT INTO survey_history 
-            VALUES(NULL, NEW.id, `Data inserted`, NOW());');
+        ("CREATE TRIGGER `insert_survey` 
+        AFTER INSERT ON `survey_pembelajaran` 
+        FOR EACH ROW INSERT INTO survey_history 
+        VALUES(NULL, NEW.id, 'Data inserted', NOW());");
     }
 
     /**
