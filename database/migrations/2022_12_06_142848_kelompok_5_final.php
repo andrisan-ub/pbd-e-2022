@@ -25,6 +25,26 @@ return new class extends Migration
         END";
 
         DB::unprepared("
+        
+        CREATE FUNCTION FIND_USER_SKM_POINT (
+            SKM_ID INT
+            ) RETURNS INT
+            READS SQL DATA
+            DETERMINISTIC
+            BEGIN
+            DECLARE TEMP INT;
+            DECLARE RETURNVAR INT;
+            SET TEMP = SKM_ID;
+            SET RETURNVAR = (
+                SELECT point
+                FROM skm_points
+                WHERE id = TEMP
+            );
+            RETURN RETURNVAR;
+            END
+           ");
+
+        DB::unprepared("
         CREATE TRIGGER AFT_INS_USER_SKM_POINT
         AFTER INSERT ON user_skm_points
         FOR EACH ROW
