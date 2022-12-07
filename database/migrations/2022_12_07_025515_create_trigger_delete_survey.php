@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('trigger_delete_survey', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
+        ("CREATE TRIGGER `delete_survey` 
+        BEFORE DELETE ON `survey_pembelajaran`
+        FOR EACH ROW INSERT INTO survey_history
+        VALUES(NULL, OLD.id, 'Data deleted', NOW())");
     }
 
     /**
