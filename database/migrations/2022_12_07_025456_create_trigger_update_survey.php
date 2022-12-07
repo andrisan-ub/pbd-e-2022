@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('trigger_update_survey', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
+        ("CREATE TRIGGER `update_survey` 
+        AFTER UPDATE ON `survey_pembelajaran`
+        FOR EACH ROW INSERT INTO survey_history
+        VALUES (NULL, NEW.id, 'Data updated', NOW());");
     }
 
     /**
