@@ -25,16 +25,6 @@ return new class extends Migration
         END";
         
         DB::unprepared("
-        CREATE TRIGGER AFT_INS_USER_SKM_POINT
-        AFTER INSERT ON user_skm_points
-        FOR EACH ROW
-        UPDATE total_skm_points
-        SET total_skm = total_skm + FIND_USER_SKM_POINT(new.skm_point_id)
-        WHERE user_id = NEW.user_id;
-        ");
-
-
-        DB::unprepared("
         
         CREATE FUNCTION FIND_USER_SKM_POINT (
             SKM_ID INT
@@ -53,7 +43,7 @@ return new class extends Migration
             RETURN RETURNVAR;
             END
            ");
-
+           
         DB::unprepared("
         CREATE TRIGGER AFT_INS_USER_SKM_POINT
         AFTER INSERT ON user_skm_points
@@ -61,7 +51,10 @@ return new class extends Migration
         UPDATE total_skm_points
         SET total_skm = total_skm + FIND_USER_SKM_POINT(new.skm_point_id)
         WHERE user_id = NEW.user_id;
-        ");
+        ");
+
+
+        
 
     }
 
