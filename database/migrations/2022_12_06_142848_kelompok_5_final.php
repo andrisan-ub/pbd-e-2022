@@ -23,6 +23,16 @@ return new class extends Migration
             PREPARE STAT FROM @SQL;
             EXECUTE STAT;
         END";
+        
+        DB::unprepared("
+        CREATE TRIGGER AFT_INS_USER_SKM_POINT
+        AFTER INSERT ON user_skm_points
+        FOR EACH ROW
+        UPDATE total_skm_points
+        SET total_skm = total_skm + FIND_USER_SKM_POINT(new.skm_point_id)
+        WHERE user_id = NEW.user_id;
+        ");
+
 
         DB::unprepared("
         
