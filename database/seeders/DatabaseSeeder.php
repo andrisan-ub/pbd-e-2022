@@ -16,5 +16,6 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call(FakeDataSeeder::class);
+        $this->call(categories_topics::class);
     }
 }

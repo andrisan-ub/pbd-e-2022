@@ -13,16 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        //
-        $procedure = "DROP PROCEDURE IF EXIST 'kelompok1_delete_data_course_classes';
-        CREATE PROCEDURE 'kelompok1_delete_data_course_classes'(
-            dr_course_classes_id bigint
-            )
-        BEGIN 
-            DELETE FROM student_grades
-            WHERE courses.id = course_classes.course_id
-        END;";
-        DB::unprepared($procedure);
+        Schema::create('users_has_topics', function (Blueprint $table) {
+            $table->unsignedBigInteger('id');
+            $table->foreign('id')->references('id')->on('users');
+            $table->unsignedBigInteger('id_topics');
+            $table->foreign('id_topics')->references('id_topics')->on('topics');
+        });
     }
 
     /**
@@ -32,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('users_has_topics');
     }
 };

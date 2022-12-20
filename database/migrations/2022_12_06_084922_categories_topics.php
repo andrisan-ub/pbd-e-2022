@@ -13,7 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('categories_topics', function (Blueprint $table) {
+            $table->id('id_category');
+            $table->string('name_category');
+        });
     }
 
     /**
@@ -23,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('categories_topics');
     }
 };
